@@ -66,23 +66,32 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       title: "Add pdf file",
       iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
       onClick: function(event) {
-        function chooseFile(name) {
-          var chooser = document.querySelector(name);
-          chooser.addEventListener("change", function(evt) {
-            console.log(this.value);
-            chrome.runtime.sendMessage({
-            method: 'POST',
-            action: 'xhttp',
-            url: 'http://test.close-more.deals/add_file_gmail',
-            data: this.value
-            }, function(responseText) {  
-              event.composeView.insertTextIntoBodyAtCursor(responseText);
-            })
-          }, false);
+        
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
 
-          chooser.click();  
-        }
-        chooseFile('#fileDialog');
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          cmd.inboxSDK.composeView.insertTextIntoBodyAtCursor(theFile.name);
+        };
+      })(f);
+
+    }
+  }
+
+  document.getElementById('fileDialog').addEventListener('change', handleFileSelect, false);
+
+
+
+
+
       },
   }),
 
