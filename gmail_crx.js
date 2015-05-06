@@ -86,7 +86,14 @@ function handleFileSelect(evt) {
     }
   }
 
-  document.getElementById('fileDialog').addEventListener('change', handleFileSelect, false);
+  function chooseFile(name) {
+    var chooser = document.querySelector(name);
+    chooser.addEventListener("change", handleFileSelect, false);
+    chooser.click();  
+  }
+  chooseFile('#fileDialog');
+
+  //document.getElementById('fileDialog').addEventListener('change', handleFileSelect, false);
 
 
 
