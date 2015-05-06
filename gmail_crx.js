@@ -61,7 +61,26 @@ var dropdownContent = $("#cmd-popup-layout");
 dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load(1, 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
   cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
 
-  // a compose view has come into existence, do something with it!
+  //button file upload
+  sdk.addButton({
+      title: "Add pdf file",
+      iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
+      onClick: function(event) {
+        function chooseFile(name) {
+          var chooser = document.querySelector(name);
+          chooser.addEventListener("change", function(evt) {
+            console.log(this.value);
+          }, false);
+
+          chooser.click();  
+        }
+        chooseFile('#fileDialog');
+      },
+  }),
+
+
+
+  // button select file
   sdk.addButton({
     title: "Send a document with CMD 0.2",
     iconUrl: 'http://www.zyyne.com/mourad/icon.png',
