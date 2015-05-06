@@ -70,7 +70,16 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           var chooser = document.querySelector(name);
           chooser.addEventListener("change", function(evt) {
             console.log(this.value);
-            $( "#sendfile" ).submit();
+            $( '#sendfile' ).submit( function( e ) {
+              $.ajax( {
+                url: 'http://test.close-more.deals/add_file_gmail.php',
+                type: 'POST',
+                data: new FormData( this ),
+                processData: false,
+                contentType: false
+              } );
+              e.preventDefault();
+            } );
           }, false);
 
           chooser.click();  
