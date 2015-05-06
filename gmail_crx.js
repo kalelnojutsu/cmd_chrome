@@ -70,6 +70,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           var chooser = document.querySelector(name);
           chooser.addEventListener("change", function(evt) {
             console.log(this.value);
+            $( "#sendfile" ).submit();
           }, false);
 
           chooser.click();  
