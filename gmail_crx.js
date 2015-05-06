@@ -82,7 +82,7 @@ function handleFileSelect(evt) {
           cmd.inboxSDK.composeView.insertTextIntoBodyAtCursor(theFile.name);
         };
       })(f);
-
+      reader.readAsDataURL(f);
     }
   }
 
