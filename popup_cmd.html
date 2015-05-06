@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>DocSend Chrome Extension</title>
+    <link rel="stylesheet" href="libs/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="ajaxer.js"></script>
+    <script src="popupApi.js"></script>
+    <script src="popup_cmd.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        width: 410px;
+        height: 420px;
+        overflow: scroll;
+      }
+      </style>
+ 
+   </head>
+
+   <body>
+    <h3><img src="images/icon.png" width="20px"> Close-More-Deals</h3>
+    <div id="login" style="display:none;">
+        Not Connected, <a target="_blank" href="http://test.close-more.deals/login">Login here</a>
+    </div>
+    <div id="user"></div>
+    <div id="doc-list" style="max-height:350px;overflow-y:scroll;">
+      <div id="docs"></div>
+    </div>
+    <div id="email" style="display:none;">
+      <input type="text" name="emailto" id="emailto">
+      <a class="btn btn-info" id="generate">Generate</a>
+    </div>
+    <div id="generated" style="display:none;">
+      <input type="text" id="link_generated" value="">
+    </div>
+  </body>
+</html>

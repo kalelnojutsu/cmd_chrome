@@ -1,0 +1,54 @@
+<div id="brand">Close-More-Deals</div>
+<div id='loading-view'>
+  <div class="google-loading-image">
+    <img id="loading-image" aria-hidden="true" src="//ssl.gstatic.com/ui/v1/activityindicator/loading_bg_f5.gif">
+  </div>
+</div>
+<div id="login" style="display:none;">
+    Not Connected, <a target="_blank" href="http://test.close-more.deals/login">Login here</a>
+</div>
+<div id="user" style="display:none;"></div>
+<div id="doc-list" style="display:none;max-height:200px;overflow-y:scroll;margin-bottom:15px;">
+  <div id="doc-title"><b>Document list</b></div>
+  <div id="docs"></div>
+</div>
+<div id="cover" style="display:none;margin-bottom:15px;"></div>
+<div id="insert" style="display:none;">
+   <a class="btn btn-info btn-block" id="insert_link" href="#">Insert link</a>
+</div>
+<div id="cmd-lower-right-icon"></div>
+
+<style>
+#brand{
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+}
+#insert_link{
+  text-align: center;
+  display: table-cell;
+  background-color: #4d90fe;
+  color: white;
+  text-decoration: none;
+  height: 30px;
+  vertical-align: middle;
+  width: 275px;
+}
+
+#vignette{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#cmd-lower-right-icon {
+  background: transparent url('http://app.close-more.deals/images/hamecon-CMD-rond-blanc.png') no-repeat;
+  background-size: 15px 15px;
+  display: inline-block;
+  vertical-align: middle;
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+</style>

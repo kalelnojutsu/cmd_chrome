@@ -1,0 +1,41 @@
+{
+  "name": "Close-more-Deals Gmail Extension",
+  "description": "Contact the right leads at the right time via your attachments",
+  "version": "0.2",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*",
+        "https://inbox.google.com/*"
+      ],
+      "js": ["jquery.js", "inboxsdk.js","content.js", "ajaxer.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background" : {
+    "scripts": [ "background.js","jquery.js" ]
+  },
+  "permissions": [
+    "https://mail.google.com/",
+    "https://inbox.google.com/",
+    "http://test.close-more.deals/",
+    "https://ajax.googleapis.com/",
+    "https://raw.githubusercontent.com/",
+    "webRequest", "webRequestBlocking"
+  ],
+  "manifest_version": 2,
+  "browser_action": {
+      "default_title": "Insert DocSend link",
+      "default_icon": "images/icon.png",
+      "default_popup": "popup_cmd.html"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [
+    "images/*.*",
+    "content.html"
+  ]
+}
