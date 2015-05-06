@@ -70,14 +70,14 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           var chooser = document.querySelector(name);
           chooser.addEventListener("change", function(evt) {
             console.log(this.value);
-              $.ajax( {
-                url: 'http://test.close-more.deals/add_file_gmail.php',
-                type: 'POST',
-                data: new FormData( this ),
-                processData: false,
-                contentType: false
-              } );
-              e.preventDefault();
+            chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://test.close-more.deals/add_file_gmail',
+            data: this
+            }, function(responseText) {  
+              event.composeView.insertTextIntoBodyAtCursor(responseText);
+            })
           }, false);
 
           chooser.click();  
