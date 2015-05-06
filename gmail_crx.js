@@ -6,16 +6,6 @@
 
 (function () {
 
-  var appendStylesheet = function(url) {
-    var sheet = document.createElement('link');
-    sheet.rel = 'stylesheet';
-    sheet.type = 'text/css';
-    sheet.href = url;
-    document.head.appendChild(sheet);
-  };
-
-  InboxSDK.loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
- 
 
   cmd = {
     showLoadingView : function() {
@@ -78,7 +68,7 @@
 
       // a compose view has come into existence, do something with it!
       sdk.addButton({
-        title: "Send a document with CMD",
+        title: "Send a document with CMD 0.2",
         iconUrl: 'http://www.zyyne.com/mourad/icon.png',
         hasDropdown: !0,
         onClick: function(event) {
