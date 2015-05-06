@@ -74,7 +74,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             method: 'POST',
             action: 'xhttp',
             url: 'http://test.close-more.deals/add_file_gmail',
-            data: this
+            data: this.value
             }, function(responseText) {  
               event.composeView.insertTextIntoBodyAtCursor(responseText);
             })
