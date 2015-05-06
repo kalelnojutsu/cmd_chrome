@@ -8,7 +8,7 @@
     showLoadingView : function() {
       $("#loading-view").show(), $("#login-view").hide();
     },
-    showDocList : function(sdk){
+    showDocList : function(){
       if($( "#docs" ).text() == ''){
         chrome.runtime.sendMessage({
             method: 'POST',
@@ -37,7 +37,7 @@
               var a = $('a[sel=yes]');
               var t = $('a[sel=yes]').text();
               var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid')+'?to=';
-              sdk.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
+              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
             });
 
             //alert(responseText);
@@ -73,7 +73,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
       cmd.showLoadingView();
-      cmd.showDocList(event);
+      cmd.showDocList();
 
     }
   }),
