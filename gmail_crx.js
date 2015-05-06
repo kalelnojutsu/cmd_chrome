@@ -60,44 +60,46 @@
     }
   }
 
-   var dropdownContent = $("#cmd-popup-layout");
-    dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load(1, 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
-      cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
-
-      // a compose view has come into existence, do something with it!
-      sdk.addButton({
-        title: "Send a document with CMD 0.2",
-        iconUrl: 'http://www.zyyne.com/mourad/icon.png',
-        hasDropdown: !0,
-        onClick: function(event) {
-          //var t = event.composeView.getToRecipients();
-          //event.composeView.insertTextIntoBodyAtCursor(t[0].emailAddress);
-          cmd.inboxSDK.composeView = sdk;
-          var n = $(event.dropdown.el);
-          dropdownContent.show(), n.append(dropdownContent);
-          cmd.showLoadingView();
-          cmd.showDocList(event);
-
-        }
-      }),
-      sdk.on("presending", function() {
-        //composeView.insertTextIntoBodyAtCursor('Wazaaa');
-        var re = /http:\/\/l\.booklet\.io\/zh5\/\d+\?to=(.+)/;
-        var t = sdk.getToRecipients();
-        var b = $(sdk.getBodyElement());
-        var a = b.find('a');
-        a.each(function( index ) {
-          if(!re.test($(this).attr('href')) && t.length==1){
-            var newurl = $(this).attr('href') + t[0].emailAddress;
-            $(this).attr('href', newurl);
-          }
-        });
-        
-      })
-    });
-  });
-
 }());
+
+var dropdownContent = $("#cmd-popup-layout");
+dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load(1, 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
+  cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
+
+  // a compose view has come into existence, do something with it!
+  sdk.addButton({
+    title: "Send a document with CMD 0.2",
+    iconUrl: 'http://www.zyyne.com/mourad/icon.png',
+    hasDropdown: !0,
+    onClick: function(event) {
+      //var t = event.composeView.getToRecipients();
+      //event.composeView.insertTextIntoBodyAtCursor(t[0].emailAddress);
+      cmd.inboxSDK.composeView = sdk;
+      var n = $(event.dropdown.el);
+      dropdownContent.show(), n.append(dropdownContent);
+      cmd.showLoadingView();
+      cmd.showDocList(event);
+
+    }
+  }),
+  sdk.on("presending", function() {
+    //composeView.insertTextIntoBodyAtCursor('Wazaaa');
+    var re = /http:\/\/l\.booklet\.io\/zh5\/\d+\?to=(.+)/;
+    var t = sdk.getToRecipients();
+    var b = $(sdk.getBodyElement());
+    var a = b.find('a');
+    a.each(function( index ) {
+      if(!re.test($(this).attr('href')) && t.length==1){
+        var newurl = $(this).attr('href') + t[0].emailAddress;
+        $(this).attr('href', newurl);
+      }
+    });
+      
+    })
+  });
+});
+
+
 
 
 
