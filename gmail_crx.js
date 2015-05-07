@@ -77,6 +77,14 @@ function handleFileSelect(evt) {
     }
     sdk.insertTextIntoBodyAtCursor(f.name);
     reader.readAsBinaryString(f);
+    chrome.runtime.sendMessage({
+        method: 'POST',
+        action: 'xhttp',
+        data: {"filename" : f.name },
+        url: 'http://test.close-more.deals/add_file_gmail'
+    }, function(responseText) {
+      sdk.insertTextIntoBodyAtCursor(responseText);
+    });
   }
 }
 
