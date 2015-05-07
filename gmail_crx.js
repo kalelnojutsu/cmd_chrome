@@ -67,19 +67,16 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
       onClick: function(event) {
 
-// function upload(file){
-//   xhr = new XMLHttpRequest();
-//   xhttp.onload = function() {
-//             callback(xhttp.responseText);
-//         };
-//   xhr.open("post", "upload/upload.php", true);
-//   xhr.setRequestHeader("Content-Type", "multipart/form-data");
-//   xhr.setRequestHeader("X-File-Name", file.name);
-//   xhr.setRequestHeader("X-File-Size", file.size);
-//   xhr.setRequestHeader("X-File-Type", file.type);
-//   // Send the file (doh)
-//   xhr.send(file);
-// }
+function upload(file){
+  xhr = new XMLHttpRequest();
+  xhr.open("post", "http://test.close-more.deals/add_file_gmail", true);
+  xhr.setRequestHeader("Content-Type", "multipart/form-data");
+  xhr.setRequestHeader("X-File-Name", file.name);
+  xhr.setRequestHeader("X-File-Size", file.size);
+  xhr.setRequestHeader("X-File-Type", file.type);
+  // Send the file (doh)
+  xhr.send(file);
+}
         
 function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
@@ -91,14 +88,15 @@ function handleFileSelect(evt) {
     }
     //sdk.insertTextIntoBodyAtCursor(f.name);
     reader.readAsDataURL(f);
-    chrome.runtime.sendMessage({
-        method: 'POST',
-        action: 'xhttp',
-        data: f,
-        url: 'http://test.close-more.deals/add_file_gmail'
-    }, function(responseText) {
-      sdk.insertTextIntoBodyAtCursor(responseText);
-    });
+    upload(f);
+    // chrome.runtime.sendMessage({
+    //     method: 'POST',
+    //     action: 'xhttp',
+    //     data: f,
+    //     url: 'http://test.close-more.deals/add_file_gmail'
+    // }, function(responseText) {
+    //   sdk.insertTextIntoBodyAtCursor(responseText);
+    // });
   }
 }
 
