@@ -83,7 +83,8 @@ function handleFileSelect(evt) {
   for (var i = 0, f; f = files[i]; i++) {
     var reader = new FileReader();
     reader.onload = function(e) {
-      var rawData = reader.result;
+      var rawData["data"] = reader.result;
+      rawData["name"] = file.name;
       chrome.runtime.sendMessage({
         method: 'POST',
         action: 'xhttp',
