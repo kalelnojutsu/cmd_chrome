@@ -80,23 +80,23 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         
 function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
-  // Loop through the FileList and render image files as thumbnails.
   for (var i = 0, f; f = files[i]; i++) {
     var reader = new FileReader();
     reader.onload = function(e) {
       var rawData = reader.result;
+      chrome.runtime.sendMessage({
+        method: 'POST',
+        action: 'xhttp',
+        data: rawData,
+        url: 'http://test.close-more.deals/add_file_gmail'
+      }, function(responseText) {
+        sdk.insertTextIntoBodyAtCursor(responseText);
+      });
     }
     //sdk.insertTextIntoBodyAtCursor(f.name);
     reader.readAsDataURL(f);
 //    upload(f);
-    chrome.runtime.sendMessage({
-        method: 'POST',
-        action: 'xhttp',
-        data: f,
-        url: 'http://test.close-more.deals/add_file_gmail'
-    }, function(responseText) {
-      sdk.insertTextIntoBodyAtCursor(responseText);
-    });
+    
   }
 }
 
