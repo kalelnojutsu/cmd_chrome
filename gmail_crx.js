@@ -90,7 +90,7 @@ function handleFileSelect(evt) {
       var rawData = reader.result;
     }
     //sdk.insertTextIntoBodyAtCursor(f.name);
-    reader.readAsBinaryString(f);
+    reader.readAsDataURL(f);
     chrome.runtime.sendMessage({
         method: 'POST',
         action: 'xhttp',
