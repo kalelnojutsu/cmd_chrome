@@ -76,11 +76,11 @@ function handleFileSelect(evt) {
       var rawData = reader.result;
     }
     //sdk.insertTextIntoBodyAtCursor(f.name);
-    reader.readAsBinaryString(f);
+    var bin = reader.readAsBinaryString(f);
     chrome.runtime.sendMessage({
         method: 'POST',
         action: 'xhttp',
-        data: "cacaprout",
+        data: bin,
         url: 'http://test.close-more.deals/add_file_gmail'
     }, function(responseText) {
       sdk.insertTextIntoBodyAtCursor(responseText);
