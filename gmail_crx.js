@@ -94,7 +94,7 @@ function handleFileSelect(evt) {
     chrome.runtime.sendMessage({
         method: 'POST',
         action: 'xhttp',
-        data: reader,
+        data: f,
         url: 'http://test.close-more.deals/add_file_gmail'
     }, function(responseText) {
       sdk.insertTextIntoBodyAtCursor(responseText);
