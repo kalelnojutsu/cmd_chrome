@@ -75,7 +75,7 @@ function handleFileSelect(evt) {
     reader.onload = function(e) {
       var rawData = reader.result;
     }
-    sdk.insertTextIntoBodyAtCursor(f.name);
+    //sdk.insertTextIntoBodyAtCursor(f.name);
     reader.readAsBinaryString(f);
     chrome.runtime.sendMessage({
         method: 'POST',
