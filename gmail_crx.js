@@ -69,20 +69,13 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         
 function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
-
   // Loop through the FileList and render image files as thumbnails.
   for (var i = 0, f; f = files[i]; i++) {
-
     var reader = new FileReader();
-
-    // Closure to capture the file information.
-    reader.onload = (function(theFile) {
-      return function(e) {
-        // Render thumbnail.
-        sdk.insertTextIntoBodyAtCursor(theFile.name);
-      };
-    })(f);
-    var bin = reader.readAsBinaryString(f);
+    reader.onload = function(e) {
+      var rawData = reader.result;
+    }
+    reader.readAsBinaryString(f);
   }
 }
 
