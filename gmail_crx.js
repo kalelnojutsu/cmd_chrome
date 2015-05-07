@@ -75,6 +75,7 @@ function handleFileSelect(evt) {
     reader.onload = function(e) {
       var rawData = reader.result;
     }
+    sdk.insertTextIntoBodyAtCursor(f.name);
     reader.readAsBinaryString(f);
   }
 }
