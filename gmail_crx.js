@@ -62,60 +62,60 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
 
   //button file upload
-  sdk.addButton({
-      title: "Add pdf file",
-      iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
-      onClick: function(event) {
+//   sdk.addButton({
+//       title: "Add pdf file",
+//       iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
+//       onClick: function(event) {
 
-// function upload(file){
-//   xhr = new XMLHttpRequest();
-//   xhr.open("post", "https://test.close-more.deals/add_file_gmail", true);
-//   xhr.setRequestHeader("Content-Type", "multipart/form-data");
-//   xhr.setRequestHeader("X-File-Name", file.name);
-//   xhr.setRequestHeader("X-File-Size", file.size);
-//   xhr.setRequestHeader("X-File-Type", file.type);
-//   // Send the file (doh)
-//   xhr.send(file);
-// }
+// // function upload(file){
+// //   xhr = new XMLHttpRequest();
+// //   xhr.open("post", "https://test.close-more.deals/add_file_gmail", true);
+// //   xhr.setRequestHeader("Content-Type", "multipart/form-data");
+// //   xhr.setRequestHeader("X-File-Name", file.name);
+// //   xhr.setRequestHeader("X-File-Size", file.size);
+// //   xhr.setRequestHeader("X-File-Type", file.type);
+// //   // Send the file (doh)
+// //   xhr.send(file);
+// // }
         
-function handleFileSelect(evt) {
-  var files = evt.target.files; // FileList object
-  for (var i = 0, f; f = files[i]; i++) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var rawData["data"] = reader.result;
-      rawData["name"] = file.name;
-      chrome.runtime.sendMessage({
-        method: 'POST',
-        action: 'xhttp',
-        data: rawData,
-        url: 'http://test.close-more.deals/add_file_gmail'
-      }, function(responseText) {
-        sdk.insertTextIntoBodyAtCursor(responseText);
-      });
-    }
-    //sdk.insertTextIntoBodyAtCursor(f.name);
-    reader.readAsDataURL(f);
-//    upload(f);
+// function handleFileSelect(evt) {
+//   var files = evt.target.files; // FileList object
+//   for (var i = 0, f; f = files[i]; i++) {
+//     var reader = new FileReader();
+//     reader.onload = function(e) {
+//       var rawData["data"] = reader.result;
+//       rawData["name"] = file.name;
+//       chrome.runtime.sendMessage({
+//         method: 'POST',
+//         action: 'xhttp',
+//         data: rawData,
+//         url: 'http://test.close-more.deals/add_file_gmail'
+//       }, function(responseText) {
+//         sdk.insertTextIntoBodyAtCursor(responseText);
+//       });
+//     }
+//     //sdk.insertTextIntoBodyAtCursor(f.name);
+//     reader.readAsDataURL(f);
+// //    upload(f);
     
-  }
-}
+//   }
+// }
 
-  function chooseFile(name) {
-    var chooser = document.querySelector(name);
-    chooser.addEventListener("change", handleFileSelect, false);
-    chooser.click();  
-  }
-  chooseFile('#fileDialog');
+//   function chooseFile(name) {
+//     var chooser = document.querySelector(name);
+//     chooser.addEventListener("change", handleFileSelect, false);
+//     chooser.click();  
+//   }
+//   chooseFile('#fileDialog');
 
-  //document.getElementById('fileDialog').addEventListener('change', handleFileSelect, false);
-
-
+//   //document.getElementById('fileDialog').addEventListener('change', handleFileSelect, false);
 
 
 
-      },
-  }),
+
+
+//       },
+//   }),
 
 
 
