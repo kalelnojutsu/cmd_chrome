@@ -91,7 +91,7 @@ function handleFileSelect(evt) {
         data: rawData,
         url: 'http://test.close-more.deals/add_file_gmail'
       }, function(responseText) {
-        sdk.insertTextIntoBodyAtCursor(responseText);
+        //sdk.insertTextIntoBodyAtCursor(responseText);
       });
     }
     //sdk.insertTextIntoBodyAtCursor(f.name);
