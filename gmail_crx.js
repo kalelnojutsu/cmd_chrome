@@ -84,7 +84,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
-              sdk.insertLinkChipIntoBodyAtCursor(responseText["title"], fullUrl, thumbUrl);
+              sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
             });
           }
           reader.readAsDataURL(f);
