@@ -70,9 +70,10 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         var files = evt.target.files; // FileList object
         for (var i = 0, f; f = files[i]; i++) {
           var reader = new FileReader();
+          reader.file = f;
           reader.onload = function(e) {
             var rawData;
-            rawData = { "data": reader.result };
+            rawData = { "data": reader.result, "file" reader.file };
             chrome.runtime.sendMessage({
               method: 'POST',
               action: 'xhttp',
