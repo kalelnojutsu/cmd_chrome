@@ -63,62 +63,52 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
 //  button file upload
   sdk.addButton({
-      title: "Add pdf file",
-      iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
-      onClick: function(event) {
+    title: "Add pdf file",
+    iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
+    onClick: function(event) {
+      function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+        for (var i = 0, f; f = files[i]; i++) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var rawData;
+            rawData = { "data": reader.result };
+            chrome.runtime.sendMessage({
+              method: 'POST',
+              action: 'xhttp',
+              data: rawData,
+              url: 'http://test.close-more.deals/add_file_gmail'
+            }, function(responseText) {
+              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+              var fullUrl = 'http://l.booklet.io/zh5/'+responseText.nid+'?to=';
+              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor('My doc', fullUrl, thumbUrl);
+            });
+          }
+          reader.readAsDataURL(f);
+        }// end for
+      } // end handleFileSelect()
 
-// function upload(file){
-//   xhr = new XMLHttpRequest();
-//   xhr.open("post", "https://test.close-more.deals/add_file_gmail", true);
-//   xhr.setRequestHeader("Content-Type", "multipart/form-data");
-//   xhr.setRequestHeader("X-File-Name", file.name);
-//   xhr.setRequestHeader("X-File-Size", file.size);
-//   xhr.setRequestHeader("X-File-Type", file.type);
-//   // Send the file (doh)
-//   xhr.send(file);
-// }
-        
-function handleFileSelect(evt) {
-  var files = evt.target.files; // FileList object
-  for (var i = 0, f; f = files[i]; i++) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var rawData;
-      rawData = { "data": reader.result };
-      chrome.runtime.sendMessage({
-        method: 'POST',
-        action: 'xhttp',
-        data: rawData,
-        url: 'http://test.close-more.deals/add_file_gmail'
-      }, function(responseText) {
-        //sdk.insertTextIntoBodyAtCursor(responseText);
-      });
-    }
-    //sdk.insertTextIntoBodyAtCursor(f.name);
-    reader.readAsDataURL(f);
-//    upload(f);
-    
-  }
-}
-
-  function chooseFile(name) {
-    var chooser = document.querySelector(name);
-    chooser.addEventListener("change", handleFileSelect, false);
-    chooser.click();  
-  }
-  chooseFile('#fileDialog');
-
-  //document.getElementById('fileDialog').addEventListener('change', handleFileSelect, false);
-
-
-
-
-
-      },
+      function chooseFile(name) {
+        var chooser = document.querySelector(name);
+        chooser.addEventListener("change", handleFileSelect, false);
+        chooser.click();  
+      }
+      chooseFile('#fileDialog');
+    },
   }),
-
-
-
+  // sdk.on("presending", function() {
+  //   //composeView.insertTextIntoBodyAtCursor('Wazaaa');
+  //   var re = /http:\/\/l\.booklet\.io\/zh5\/\d+\?to=(.+)/;
+  //   var t = sdk.getToRecipients();
+  //   var b = $(sdk.getBodyElement());
+  //   var a = b.find('a');
+  //   a.each(function( index ) {
+  //     if(!re.test($(this).attr('href')) && t.length==1){
+  //       var newurl = $(this).attr('href') + t[0].emailAddress;
+  //       $(this).attr('href', newurl);
+  //     }
+  //   });
+  // }),
   // button select file
   sdk.addButton({
     title: "Send a document with CMD 0.2",
