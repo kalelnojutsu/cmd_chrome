@@ -82,7 +82,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
-              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor('My doc', fullUrl, thumbUrl);
+              sdk.insertLinkChipIntoBodyAtCursor('My doc', fullUrl, thumbUrl);
             });
           }
           reader.readAsDataURL(f);
