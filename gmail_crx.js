@@ -73,7 +73,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           reader.file = f;
           reader.onload = function(e) {
             var rawData;
-            rawData = { "data": reader.result, "file" reader.file };
+            rawData = { "data": reader.result, "file" : reader.file };
             chrome.runtime.sendMessage({
               method: 'POST',
               action: 'xhttp',
