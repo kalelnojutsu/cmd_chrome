@@ -84,7 +84,7 @@ function handleFileSelect(evt) {
     var reader = new FileReader();
     reader.onload = function(e) {
       var rawData;
-      rawData = { "data": reader.result , "name" : f.name };
+      rawData = { "data": reader.result };
       chrome.runtime.sendMessage({
         method: 'POST',
         action: 'xhttp',
