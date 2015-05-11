@@ -83,16 +83,16 @@ function handleFileSelect(evt) {
   for (var i = 0, f; f = files[i]; i++) {
     var reader = new FileReader();
     reader.onload = function(e) {
-      // var rawData["data"] = reader.result;
-      // rawData["name"] = file.name;
-      // chrome.runtime.sendMessage({
-      //   method: 'POST',
-      //   action: 'xhttp',
-      //   data: rawData,
-      //   url: 'http://test.close-more.deals/add_file_gmail'
-      // }, function(responseText) {
-      //   sdk.insertTextIntoBodyAtCursor(responseText);
-      // });
+      var rawData;
+      rawData = { "data": reader.result , "name" : file.name };
+      chrome.runtime.sendMessage({
+        method: 'POST',
+        action: 'xhttp',
+        data: rawData,
+        url: 'http://test.close-more.deals/add_file_gmail'
+      }, function(responseText) {
+        sdk.insertTextIntoBodyAtCursor(responseText);
+      });
     }
     //sdk.insertTextIntoBodyAtCursor(f.name);
     reader.readAsDataURL(f);
