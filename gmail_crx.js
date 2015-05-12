@@ -66,7 +66,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     title: "Add pdf file",
     iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
     onClick: function(event) {
-      cmd.inboxSDK.composeView = sdk;
+      //cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
       function handleFileSelect(evt) {
         var files = evt.target.files; // FileList object
@@ -79,21 +79,21 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             console.log("Loading Starting !");
           }
           reader.onload = function(e) {
-            dropdownContent.show(), n.append(dropdownContent);
-            cmd.showLoadingView();
+            // dropdownContent.show(), n.append(dropdownContent);
+            // cmd.showLoadingView();
             var rawData;
             rawData = { "data": reader.result, "file" : reader.file };
-            chrome.runtime.sendMessage({
-              method: 'POST',
-              action: 'xhttp',
-              data: rawData,
-              url: 'http://test.close-more.deals/add_file_gmail'
-            }, function(responseText) {
-              responseText = JSON.parse(responseText);
-              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
-              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
-              sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
-            });
+            // chrome.runtime.sendMessage({
+            //   method: 'POST',
+            //   action: 'xhttp',
+            //   data: rawData,
+            //   url: 'http://test.close-more.deals/add_file_gmail'
+            // }, function(responseText) {
+            //   responseText = JSON.parse(responseText);
+            //   var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+            //   var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
+            //   sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
+            // });
           }
           reader.readAsDataURL(f);
         //}// end for
