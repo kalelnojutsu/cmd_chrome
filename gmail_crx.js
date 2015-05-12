@@ -121,7 +121,12 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
       // }
 
-      $('#fileDialog').change(function(){ handleFileSelect(); $('#fileDialog').click();  );
+      $('#fileDialog').change(
+        function(){
+          handleFileSelect();
+          $('#fileDialog').click();
+        }
+      );
 
 //       function chooseFile(name) {
 //         var chooser = document.querySelector(name);
