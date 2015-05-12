@@ -72,12 +72,13 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     onClick: function(event) {
       //cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
-      dropdownContent.show(), n.append(dropdownContent);
-      cmd.showLoadingView();
+      n.append(dropdownContent);
+      
       function handleFileSelect(evt) {
         var files = evt.target.files; // FileList object
         for (var i = 0, f; f = files[i]; i++) {
-
+          dropdownContent.show();
+          cmd.showLoadingView();
           var reader = new FileReader();
           reader.file = f;
 
