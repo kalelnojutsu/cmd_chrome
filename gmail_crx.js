@@ -65,6 +65,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   sdk.addButton({
     title: "Add pdf file",
     iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
+    hasDropdown: !0,
     onClick: function(event) {
       //cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
