@@ -75,6 +75,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       dropdownContent.show(), n.append(dropdownContent);
       
       function handleFileSelect(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
         var files = evt.target.files; // FileList object
         for (var i = 0, f; f = files[i]; i++) {
           
