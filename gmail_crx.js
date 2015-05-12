@@ -91,7 +91,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             var rawData;
             rawData = { "data": reader.result, "file" : reader.file };
             var uniqid = (new Date().getTime() + Math.floor((Math.random()*10000)+1)).toString(16);
-            console.log(uniqid+" - "+reader.file);
+            console.log(uniqid+" - "+reader.file.name);
             chrome.runtime.sendMessage({
               method: 'POST',
               action: 'xhttp',
