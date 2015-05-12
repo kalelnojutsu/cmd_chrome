@@ -114,7 +114,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
       function chooseFile(name) {
         var chooser = document.querySelector(name);
-        chooser.addEventListener("change", handleFileSelect, false);
+        chooser.addEventListener("change", handleFileSelect, true);
+//        $(name).change(function(){ handleFileSelect(); });
+
         console.log("Choose file function !");
         chooser.click();  
       }
