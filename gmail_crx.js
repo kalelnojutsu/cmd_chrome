@@ -106,7 +106,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
               cmd.hideDropdown();
-              unchoosefile('#fileDialog')
+              unchoosefile('#fileDialog');
             });
           }
           reader.readAsDataURL(f);
