@@ -76,8 +76,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       cmd.showLoadingView();
       function handleFileSelect(evt) {
         var files = evt.target.files; // FileList object
-        //for (var i = 0, f; f = files[i]; i++) {
-          f = files[0];
+        for (var i = 0, f; f = files[i]; i++) {
+
           var reader = new FileReader();
           reader.file = f;
 
@@ -103,7 +103,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             });
           }
           reader.readAsDataURL(f);
-        //}// end for
+        }// end for
       } // end handleFileSelect()
 
       function chooseFile(name) {
