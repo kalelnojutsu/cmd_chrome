@@ -5,6 +5,9 @@
 // Loaded by content.js from Github
 
   cmd = {
+    hideDropdown : function() {
+      $("#cmd-popup-layout").hide();
+    },
     showLoadingView : function() {
       $("#loading-view").show(), $("#login-view").hide();
     },
@@ -81,21 +84,24 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           reader.onloadstart = function(e) {
             console.log("Loading Starting !");
           }
+          reader.onloadend = function(e) {
+            cmd.hideDropdown();
+          }
           reader.onload = function(e) {
             
             var rawData;
             rawData = { "data": reader.result, "file" : reader.file };
-            // chrome.runtime.sendMessage({
-            //   method: 'POST',
-            //   action: 'xhttp',
-            //   data: rawData,
-            //   url: 'http://test.close-more.deals/add_file_gmail'
-            // }, function(responseText) {
-            //   responseText = JSON.parse(responseText);
-            //   var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
-            //   var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
-            //   sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
-            // });
+            chrome.runtime.sendMessage({
+              method: 'POST',
+              action: 'xhttp',
+              data: rawData,
+              url: 'http://test.close-more.deals/add_file_gmail'
+            }, function(responseText) {
+              responseText = JSON.parse(responseText);
+              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
+              sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
+            });
           }
           reader.readAsDataURL(f);
         //}// end for
