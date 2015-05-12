@@ -72,7 +72,15 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           f = files[0];
           var reader = new FileReader();
           reader.file = f;
+
+          reader.onloadstart = function(e) {
+            console.log("Loading Starting !");
+          }
+
+
+
           reader.onload = function(e) {
+            cmd.showLoadingView();
             var rawData;
             rawData = { "data": reader.result, "file" : reader.file };
             chrome.runtime.sendMessage({
