@@ -69,6 +69,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     onClick: function(event) {
       //cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
+      dropdownContent.show(), n.append(dropdownContent);
+      cmd.showLoadingView();
       function handleFileSelect(evt) {
         var files = evt.target.files; // FileList object
         //for (var i = 0, f; f = files[i]; i++) {
@@ -80,8 +82,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             console.log("Loading Starting !");
           }
           reader.onload = function(e) {
-            // dropdownContent.show(), n.append(dropdownContent);
-            // cmd.showLoadingView();
+            
             var rawData;
             rawData = { "data": reader.result, "file" : reader.file };
             // chrome.runtime.sendMessage({
