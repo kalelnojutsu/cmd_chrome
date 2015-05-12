@@ -106,6 +106,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
               cmd.hideDropdown();
+              chooser.removeEventListener("change", handleFileSelect, false);
             });
           }
           reader.readAsDataURL(f);
@@ -114,7 +115,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
       function chooseFile(name) {
         var chooser = document.querySelector(name);
-        chooser.addEventListener("change", handleFileSelect, true);
+        chooser.addEventListener("change", handleFileSelect, false);
 //        $(name).change(function(){ handleFileSelect(); });
 
         console.log("Choose file function !");
