@@ -90,6 +90,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             
             var rawData;
             rawData = { "data": reader.result, "file" : reader.file };
+            var uniqid = (new Date().getTime() + Math.floor((Math.random()*10000)+1)).toString(16);
+            console.log(uniqid+" - "+reader.file);
             chrome.runtime.sendMessage({
               method: 'POST',
               action: 'xhttp',
@@ -115,19 +117,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       chooseFile('#fileDialog');
     },
   }),
-  // sdk.on("presending", function() {
-  //   //composeView.insertTextIntoBodyAtCursor('Wazaaa');
-  //   var re = /http:\/\/l\.booklet\.io\/zh5\/\d+\?to=(.+)/;
-  //   var t = sdk.getToRecipients();
-  //   var b = $(sdk.getBodyElement());
-  //   var a = b.find('a');
-  //   a.each(function( index ) {
-  //     if(!re.test($(this).attr('href')) && t.length==1){
-  //       var newurl = $(this).attr('href') + t[0].emailAddress;
-  //       $(this).attr('href', newurl);
-  //     }
-  //   });
-  // }),
   // button select file
   sdk.addButton({
     title: "Send a document with CMD 0.2",
