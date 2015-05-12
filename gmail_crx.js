@@ -57,8 +57,6 @@
     } 
   }
 
-
-      
 var dropdownContent = $("#cmd-popup-layout");
 dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load(1, 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
   cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
@@ -101,7 +99,12 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         //}// end for
       } // end handleFileSelect()
 
-
+      function chooseFile(name) {
+        var chooser = document.querySelector(name);
+        chooser.addEventListener("change", handleFileSelect, false);
+        chooser.click();  
+      }
+      chooseFile('#fileDialog');
     },
   }),
   // sdk.on("presending", function() {
@@ -151,12 +154,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
 
 
-function chooseFile(name) {
-  var chooser = document.querySelector(name);
-  chooser.addEventListener("change", handleFileSelect, false);
-  chooser.click();  
-}
-chooseFile('#fileDialog');
+
 
 
 
