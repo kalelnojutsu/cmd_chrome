@@ -87,7 +87,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
           reader.onloadstart = function(e) {
             console.log("Loading Starting !");
-            $("#doc-load-title").append("Title: "+f.name);
+            $("#doc-load-title").append("Title: "+reader.file.name);
             $("#doc-load-title").show();
 
           }
