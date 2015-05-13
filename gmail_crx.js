@@ -129,12 +129,26 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       } // end handleFileSelect()
 
       function chooseFile(name) {
-        var chooser = document.querySelector(name);
-        b = $(name);
-        b.bind("change", handleFileSelect);
+
         //chooser.addEventListener("change", handleFileSelect, false);
         //console.log("Choose file function !");
-        chooser.click();  
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://test.close-more.deals/connect'
+        }, function(responseText) {
+            var response = JSON.parse(responseText);
+            var uid = response['user'][0]['uid'];
+            if(uid == 0){
+              $( '#login' ).show();
+            }
+            else{
+              var chooser = document.querySelector(name);
+              b = $(name);
+              b.bind("change", handleFileSelect);
+              chooser.click();  
+            }
+        });
       }
       chooseFile('#fileDialog');
 
