@@ -20,30 +20,34 @@
         }, function(responseText) {
             $("#loading-view").hide();
             $("doc-load-title").hide();
-            var response = JSON.parse(responseText);
-            var uid = response['user'][0]['uid'];
-            $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
-            $( "#user" ).append( "<p>"+response['user'][0]['mail']+"</p>" ).show();
-            $.each(response['documents'], function( index, doc ) {
-              $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
-            });
-            $( ".doc" ).on( "click", function() {
-              $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
-              $( "#insert" ).attr('nid',$(this).attr('nid')).show();
-              var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
-              $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
-              $('.doc').hide();
-              $(this).attr('sel','yes').show();
-            });
-            $( "#insert" ).on( "click", function() {
-              //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
-              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
-              var a = $('a[sel=yes]');
-              var t = $('a[sel=yes]').text();
-              var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid')+'?to=';
-              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
-            });
-
+            if(response['user'][0]['uid'] == 0){
+              $( '#login' ).show();
+            }
+            else{
+              var response = JSON.parse(responseText);
+              var uid = response['user'][0]['uid'];
+              $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
+              $( "#user" ).append( "<p>"+response['user'][0]['mail']+"</p>" ).show();
+              $.each(response['documents'], function( index, doc ) {
+                $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
+              });
+              $( ".doc" ).on( "click", function() {
+                $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
+                $( "#insert" ).attr('nid',$(this).attr('nid')).show();
+                var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
+                $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
+                $('.doc').hide();
+                $(this).attr('sel','yes').show();
+              });
+              $( "#insert" ).on( "click", function() {
+                //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
+                var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+                var a = $('a[sel=yes]');
+                var t = $('a[sel=yes]').text();
+                var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid')+'?to=';
+                cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
+              });
+            }
             //alert(responseText);
             /*Callback function to deal with the response*/
         });
