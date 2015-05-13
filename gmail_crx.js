@@ -73,20 +73,22 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       //cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
-      
+      dropdownContent.hide();
       function handleFileSelect(evt) {
-        console.log("Handle file select");
+
+        //console.log("Handle file select");
         evt.stopPropagation();
         evt.preventDefault();
         var files = evt.target.files; // FileList object
         for (var i = 0, f; f = files[i]; i++) {
-          
+          dropdownContent.show();
           cmd.showLoadingView();
           var reader = new FileReader();
           reader.file = f;
 
           reader.onloadstart = function(e) {
-            console.log("Loading Starting !");
+            //console.log("Loading Starting !");
+            $("#doc-load-title").empty();
             $("#doc-load-title").append("Title: "+reader.file.name);
             $("#doc-load-title").show();
 
@@ -123,7 +125,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         b = $(name);
         b.bind("change", handleFileSelect);
         //chooser.addEventListener("change", handleFileSelect, false);
-        console.log("Choose file function !");
+        //console.log("Choose file function !");
         chooser.click();  
       }
       chooseFile('#fileDialog');
