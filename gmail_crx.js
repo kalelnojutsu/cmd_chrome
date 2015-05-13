@@ -113,7 +113,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           reader.onloadstart = function(e) {
             //console.log("Loading Starting !");
             $("#doc-load-title").empty();
-            $("#doc-load-title").append("Title: "+reader.file.name+"<br>Please Wait, your file is being uploaded");
+            $("#doc-load-title").append("<b>Title: </b>"+reader.file.name+"<br><span style=\"color:#D74A38\">Please Wait, your file is being uploaded</span>");
             $("#user").empty();
             $("#user").append("Account: "+response['user'][0]['mail']);
             $("#doc-load-title").show();
