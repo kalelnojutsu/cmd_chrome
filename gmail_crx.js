@@ -27,7 +27,8 @@
             }
             else{
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
-              $( "#user" ).append( "<p>"+response['user'][0]['mail']+"</p>" ).show();
+              $( "#user" ).empty();
+              $( "#user" ).append( "<p>Account: "+response['user'][0]['mail']+"</p>" ).show();
               $.each(response['documents'], function( index, doc ) {
                 $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
@@ -112,7 +113,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           reader.onloadstart = function(e) {
             //console.log("Loading Starting !");
             $("#doc-load-title").empty();
-            $("#doc-load-title").append("Title: "+reader.file.name);
+            $("#doc-load-title").append("Title: "+reader.file.name+"<br>Please Wait, your file is being uploaded");
             $("#user").empty();
             $("#user").append("Account: "+response['user'][0]['mail']);
             $("#doc-load-title").show();
