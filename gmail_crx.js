@@ -112,7 +112,13 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             //console.log("Loading Starting !");
             $("#doc-load-title").empty();
             $("#doc-load-title").append("Title: "+reader.file.name);
+            $("#user").empty();
+            $("#user").append("Account: "+response['user'][0]['mail']);
             $("#doc-load-title").show();
+            $( '#login' ).hide();
+            $('#doc-list').hide();
+            $( '#cover' ).hide();
+            $( '#insert' ).hide();
 
           }
 
