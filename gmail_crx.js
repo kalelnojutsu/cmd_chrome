@@ -53,6 +53,7 @@
         });
       }
       else{ 
+        $("#doc-load-title").hide();
         $("#loading-view").hide();
         $("#cover").empty();
         $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
