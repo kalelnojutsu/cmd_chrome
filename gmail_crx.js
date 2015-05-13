@@ -87,6 +87,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
           reader.onloadstart = function(e) {
             console.log("Loading Starting !");
+            $("#doc-load-title").append("Title: "+f.name);
+            $("#doc-load-title").show();
+
           }
 
           reader.onload = function(e) {
@@ -114,21 +117,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           reader.readAsDataURL(f);
         }// end for
       } // end handleFileSelect()
-
-
-      // function unchoosefile(name){
-      //  var chooser = document.querySelector(name);
-      //   chooser.removeEventListener("change", handleFileSelect, false);
-      //   console.log("Choose file function !");
-
-      // }
-
-      // $('#fileDialog').change(
-      //   function(){
-      //     handleFileSelect();
-      //     $('#fileDialog').click();
-      //   }
-      // );
 
       function chooseFile(name) {
         var chooser = document.querySelector(name);
