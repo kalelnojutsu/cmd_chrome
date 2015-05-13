@@ -81,8 +81,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         evt.preventDefault();
         var files = evt.target.files; // FileList object
         for (var i = 0, f; f = files[i]; i++) {
-          dropdownContent.show();
           cmd.showLoadingView();
+          dropdownContent.show();
+
           var reader = new FileReader();
           reader.file = f;
 
