@@ -82,6 +82,20 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       //dropdownContent.hide();
       function handleFileSelect(evt) {
 
+
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://test.close-more.deals/connect'
+        }, function(responseText) {
+            var response = JSON.parse(responseText);
+            var uid = response['user'][0]['uid'];
+            if(uid == 0){
+              $("#loading-view").hide();
+              $( '#login' ).show();
+            }
+            else{
+
         //console.log("Handle file select");
         evt.stopPropagation();
         evt.preventDefault();
@@ -126,30 +140,20 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           }
           reader.readAsDataURL(f);
         }// end for
+      }//end else
+      }); // end send message
       } // end handleFileSelect()
 
       function chooseFile(name) {
 
         //chooser.addEventListener("change", handleFileSelect, false);
         //console.log("Choose file function !");
-        chrome.runtime.sendMessage({
-            method: 'POST',
-            action: 'xhttp',
-            url: 'http://test.close-more.deals/connect'
-        }, function(responseText) {
-            var response = JSON.parse(responseText);
-            var uid = response['user'][0]['uid'];
-            if(uid == 0){
-              $("#loading-view").hide();
-              $( '#login' ).show();
-            }
-            else{
-              var chooser = document.querySelector(name);
-              b = $(name);
-              b.bind("change", handleFileSelect);
-              b.click();  
-            }
-        });
+
+        var chooser = document.querySelector(name);
+        b = $(name);
+        b.bind("change", handleFileSelect);
+        b.click();  
+
       }
       chooseFile('#fileDialog');
 
