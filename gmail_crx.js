@@ -135,14 +135,14 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       chooseFile('#fileDialog');
 
 
-      var godzilla = document.getElementById('#fileDialog')
+      var godzilla = document.getElementById('fileDialog');
 
-godzilla.onclick = charge
+godzilla.onclick = charge;
 
 function charge()
 {
-    document.body.onfocus = roar
-    console.log('chargin')
+    document.body.onfocus = roar;
+    console.log('chargin');
 }
     
 function roar()
@@ -152,8 +152,8 @@ function roar()
       alert('*empty wheeze*');
       cmd.hideDropdown();
     }
-    document.body.onfocus = null
-    console.log('depleted')
+    document.body.onfocus = null;
+    console.log('depleted');
 }
 
 
