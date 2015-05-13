@@ -105,9 +105,10 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
-              cmd.hideDropdown();
               b = $("#fileDialog");
-              b.removeEventListener("change", handleFileSelect, false);
+              b.unbind("change", handleFileSelect);
+              cmd.hideDropdown();
+
             });
           }
           reader.readAsDataURL(f);
