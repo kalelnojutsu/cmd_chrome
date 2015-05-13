@@ -19,7 +19,7 @@
             url: 'http://test.close-more.deals/connect'
         }, function(responseText) {
             $("#loading-view").hide();
-            $("doc-load-title").hide();
+            $("#doc-load-title").hide();
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
             if(uid == 0){
