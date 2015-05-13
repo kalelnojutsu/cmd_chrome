@@ -20,12 +20,12 @@
         }, function(responseText) {
             $("#loading-view").hide();
             $("doc-load-title").hide();
-            if(response['user'][0]['uid'] == 0){
+            var response = JSON.parse(responseText);
+            var uid = response['user'][0]['uid'];
+            if(uid == 0){
               $( '#login' ).show();
             }
             else{
-              var response = JSON.parse(responseText);
-              var uid = response['user'][0]['uid'];
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
               $( "#user" ).append( "<p>"+response['user'][0]['mail']+"</p>" ).show();
               $.each(response['documents'], function( index, doc ) {
