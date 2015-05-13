@@ -19,6 +19,7 @@
             url: 'http://test.close-more.deals/connect'
         }, function(responseText) {
             $("#loading-view").hide();
+            $("doc-load-title").hide();
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
             $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
@@ -72,7 +73,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     onClick: function(event) {
       //cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
-      dropdownContent.show(), n.append(dropdownContent);
+      n.append(dropdownContent);
       dropdownContent.hide();
       function handleFileSelect(evt) {
 
