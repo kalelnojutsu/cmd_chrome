@@ -152,7 +152,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         var chooser = document.querySelector(name);
         b = $(name);
         b.bind("change", handleFileSelect);
-        b.click();  
+        chooser.click();  
 
       }
       chooseFile('#fileDialog');
