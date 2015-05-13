@@ -75,7 +75,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       var n = $(event.dropdown.el);
       dropdownContent.show();
       n.append(dropdownContent);
-      //dropdownContent.hide();
+      dropdownContent.hide();
       function handleFileSelect(evt) {
 
         //console.log("Handle file select");
@@ -83,8 +83,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         evt.preventDefault();
         var files = evt.target.files; // FileList object
         for (var i = 0, f; f = files[i]; i++) {
-          cmd.showLoadingView();
           dropdownContent.show();
+          cmd.showLoadingView();
+          
 
           var reader = new FileReader();
           reader.file = f;
