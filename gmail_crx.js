@@ -133,6 +133,30 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         chooser.click();  
       }
       chooseFile('#fileDialog');
+
+
+      var godzilla = document.getElementById('#fileDialog')
+
+godzilla.onclick = charge
+
+function charge()
+{
+    document.body.onfocus = roar
+    console.log('chargin')
+}
+    
+function roar()
+{
+    if(godzilla.value.length) alert('ROAR! FILES!')
+    else{
+      alert('*empty wheeze*');
+      cmd.hideDropdown();
+    }
+    document.body.onfocus = null
+    console.log('depleted')
+}
+
+
     },
   }),
   // button select file
