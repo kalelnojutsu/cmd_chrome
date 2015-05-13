@@ -106,7 +106,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
               cmd.hideDropdown();
-              //unchoosefile('#fileDialog');
+              b = $("#fileDialog");
+              b.removeEventListener("change", handleFileSelect, false);
             });
           }
           reader.readAsDataURL(f);
@@ -121,22 +122,20 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
       // }
 
-      $('#fileDialog').change(
-        function(){
-          handleFileSelect();
-          $('#fileDialog').click();
-        }
-      );
+      // $('#fileDialog').change(
+      //   function(){
+      //     handleFileSelect();
+      //     $('#fileDialog').click();
+      //   }
+      // );
 
-//       function chooseFile(name) {
-//         var chooser = document.querySelector(name);
-//         chooser.addEventListener("change", handleFileSelect, false);
-// //        $(name).change(function(){ handleFileSelect(); });
-
-//         console.log("Choose file function !");
-//         chooser.click();  
-//       }
-//       chooseFile('#fileDialog');
+      function chooseFile(name) {
+        var chooser = document.querySelector(name);
+        chooser.addEventListener("change", handleFileSelect, false);
+        console.log("Choose file function !");
+        chooser.click();  
+      }
+      chooseFile('#fileDialog');
     },
   }),
   // button select file
