@@ -34,6 +34,8 @@
               });
               $( ".doc" ).on( "click", function() {
                 $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
+                $('#doc-title').hide();
+                $('#info-recipients').show();
                 $( "#insert" ).attr('nid',$(this).attr('nid')).show();
                 var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
                 $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
@@ -73,7 +75,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
 //  button file upload
   sdk.addButton({
-    title: "Add pdf file",
+    title: "Upload a PDF and track with Close More Deals",
     iconUrl: 'https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png',
     hasDropdown: !0,
     onClick: function(event) {
@@ -192,7 +194,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   // button select file
   sdk.addButton({
-    title: "Send a document with CMD 0.2",
+    title: "Send and track a document with Close More Deals",
     iconUrl: 'http://www.zyyne.com/mourad/icon.png',
     hasDropdown: !0,
     onClick: function(event) {
