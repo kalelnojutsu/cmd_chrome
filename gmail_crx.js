@@ -215,7 +215,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
     a.each(function( index ) {
-      if(!re.test($(this).attr('href')) && t.length==1){
+      if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
       }
