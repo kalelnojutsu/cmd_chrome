@@ -28,7 +28,7 @@
             else{
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
               $( "#user" ).empty();
-              $( "#user" ).append( "<p>Account: "+response['user'][0]['mail']+"</p>" ).show();
+              $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
               $.each(response['documents'], function( index, doc ) {
                 $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
