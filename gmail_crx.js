@@ -47,7 +47,7 @@
                 var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
                 var a = $('a[sel=yes]');
                 var t = $('a[sel=yes]').text();
-                var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid')+'?to=';
+                var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
                 cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
               });
             }
@@ -140,7 +140,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             }, function(responseText) {
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
-              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"]+'?to=';
+              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
               b = $("#fileDialog");
               b.unbind("change", handleFileSelect);
@@ -210,13 +210,13 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
-    var re = /http:\/\/l\.booklet\.io\/zh5\/\d+\?to=(.+)/;
+    var re = /http:\/\/l.booklet.io\/zh5\/(\d+)/; 
     var t = sdk.getToRecipients();
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
     a.each(function( index ) {
       if(!re.test($(this).attr('href')) && t.length==1){
-        var newurl = $(this).attr('href') + t[0].emailAddress;
+        var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
       }
     });
