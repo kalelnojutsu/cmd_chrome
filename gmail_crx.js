@@ -210,7 +210,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
-    var re = /http:\/\/l.booklet.io\/zh5\/(\d+)/; 
+    var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
