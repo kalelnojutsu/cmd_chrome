@@ -61,6 +61,8 @@
         $('#doc-title').show();
         $('#brand').show();
         $("#loading-view").hide();
+        $("#insert").hide();
+        $("#info-recipients").hide();
         $("#cover").empty();
         $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
         $(".doc" ).each(function( index ) {
