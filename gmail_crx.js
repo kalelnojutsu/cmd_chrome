@@ -33,6 +33,7 @@
                 $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
               $( ".doc" ).on( "click", function() {
+                $('#brand').hide();
                 $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
                 $('#doc-title').hide();
                 $('#info-recipients').show();
@@ -58,6 +59,7 @@
       else{ 
         $("#doc-load-title").hide();
         $('#doc-title').show();
+        $('#brand').show();
         $("#loading-view").hide();
         $("#cover").empty();
         $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
