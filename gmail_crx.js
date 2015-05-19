@@ -57,6 +57,7 @@
       }
       else{ 
         $("#doc-load-title").hide();
+        $('#doc-title').show();
         $("#loading-view").hide();
         $("#cover").empty();
         $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
