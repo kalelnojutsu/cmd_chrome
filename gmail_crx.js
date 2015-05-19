@@ -16,7 +16,7 @@
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
-            url: 'http://test.close-more.deals/connect'
+            url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
             $("#loading-view").hide();
             $("#doc-load-title").hide();
@@ -90,7 +90,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
-            url: 'http://test.close-more.deals/connect'
+            url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
@@ -136,7 +136,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               method: 'POST',
               action: 'xhttp',
               data: rawData,
-              url: 'http://test.close-more.deals/add_file_gmail'
+              url: 'http://app.close-more.deals/add_file_gmail'
             }, function(responseText) {
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
