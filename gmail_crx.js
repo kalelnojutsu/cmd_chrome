@@ -135,7 +135,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           reader.onload = function(e) {
             
             var rawData;
-            rawData = { "data": reader.result, "file" : reader.file };
+            rawData = { "data": reader.result, "file" : reader.file.name };
             var uniqid = (new Date().getTime() + Math.floor((Math.random()*10000)+1)).toString(16);
             console.log(uniqid+" - "+reader.file.name);
             chrome.runtime.sendMessage({
