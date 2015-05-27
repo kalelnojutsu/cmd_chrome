@@ -91,7 +91,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       //dropdownContent.hide();
       function handleFileSelect(evt) {
 
-
+      b = $("#fileDialog");
+      b.unbind("change", handleFileSelect);
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
@@ -148,8 +149,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
-              b = $("#fileDialog");
-              b.unbind("change", handleFileSelect);
+
               cmd.hideDropdown();
 
             });
