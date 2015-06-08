@@ -17,7 +17,7 @@ var depot='test';
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
-            url: 'http://'+depot+'.close-more.deals/connect'
+            url: 'http://test.close-more.deals/connect'
         }, function(responseText) {
             $("#loading-view").hide();
             $("#doc-load-title").hide();
