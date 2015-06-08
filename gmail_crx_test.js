@@ -3,6 +3,7 @@
 
 // Script CMD Chrome Gmail Extension 0.2
 // Loaded by content.js from Github
+var depot = "test";
 
   cmd = {
     hideDropdown : function() {
@@ -16,7 +17,7 @@
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
-            url: 'http://app.close-more.deals/connect'
+            url: 'http://'+depot+'.close-more.deals/connect'
         }, function(responseText) {
             $("#loading-view").hide();
             $("#doc-load-title").hide();
