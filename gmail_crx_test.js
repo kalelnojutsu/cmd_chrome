@@ -143,7 +143,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               method: 'POST',
               action: 'xhttp',
               data: rawData,
-              url: 'http://app.close-more.deals/add_file_gmail'
+              url: 'http://app.close-more.deals/add_file_gmail_test'
             }, function(responseText) {
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
