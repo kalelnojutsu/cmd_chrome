@@ -3,6 +3,7 @@
 
 // Script CMD Chrome Gmail Extension 0.2
 // Loaded by content.js from Github
+var depot={'app':'test'};
 
   cmd = {
     hideDropdown : function() {
@@ -74,7 +75,6 @@
     } 
   }
 
-depot={'app':'test'};
 
 var dropdownContent = $("#cmd-popup-layout");
 dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load(1, 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
