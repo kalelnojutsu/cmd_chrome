@@ -3,6 +3,7 @@
 
 // Script CMD Chrome Gmail Extension 0.2
 // Loaded by content.js from Github
+console.log("Debut Gmail-crx");
 
   cmd = {
     hideDropdown : function() {
@@ -12,20 +13,24 @@
       $("#loading-view").show(), $("#login-view").hide();
     },
     showDocList : function(){
+    console.log("Debut showDocList");
       if($( "#docs" ).text() == ''){
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
             url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
+        	console.log("Response from connect showDocList");
             $("#loading-view").hide();
             $("#doc-load-title").hide();
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
             if(uid == 0){
+            	console.log("Response uid=0 showDocList");
               $( '#login' ).show();
             }
             else{
+            	console.log("Connected showDocList");
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
               $( "#user" ).empty();
               $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
@@ -33,6 +38,7 @@
                 $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
               $( ".doc" ).on( "click", function() {
+              	console.log("Click on doc showDocList");
                 $('#brand').hide();
                 $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
                 $('#doc-title').hide();
@@ -230,7 +236,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
  });
 });
 
-
+console.log("Fin Gmail-crx");
 
 
 
