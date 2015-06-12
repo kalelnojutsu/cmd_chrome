@@ -32,17 +32,17 @@
               $.each(response['documents'], function( index, doc ) {
                 $( "#docs" ).append( "<div><a sel=\"no\" href=\"#\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
-              $( ".doc" ).on( "click", function() {
-                $('#brand').hide();
-                $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
-                $('#doc-title').hide();
-                $('#info-recipients').show();
-                $( "#insert" ).attr('nid',$(this).attr('nid')).show();
-                var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
-                $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
-                $('.doc').hide();
-                $(this).attr('sel','yes').show();
-              });
+              // $( ".doc" ).on( "click", function() {
+              //   $('#brand').hide();
+              //   $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
+              //   $('#doc-title').hide();
+              //   $('#info-recipients').show();
+              //   $( "#insert" ).attr('nid',$(this).attr('nid')).show();
+              //   var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
+              //   $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
+              //   $('.doc').hide();
+              //   $(this).attr('sel','yes').show();
+              // });
               // $( "#insert" ).on( "click", function() {
               //   //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
               //   var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
