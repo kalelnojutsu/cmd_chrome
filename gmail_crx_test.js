@@ -43,14 +43,14 @@
                 $('.doc').hide();
                 $(this).attr('sel','yes').show();
               });
-              $( "#insert" ).on( "click", function() {
-                //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
-                var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
-                var a = $('a[sel=yes]');
-                var t = $('a[sel=yes]').text();
-                var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
-                cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
-              });
+              // $( "#insert" ).on( "click", function() {
+              //   //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
+              //   var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+              //   var a = $('a[sel=yes]');
+              //   var t = $('a[sel=yes]').text();
+              //   var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
+              //   cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
+              // });
             }
             //alert(responseText);
             /*Callback function to deal with the response*/
