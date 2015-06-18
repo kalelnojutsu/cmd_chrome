@@ -198,7 +198,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     hasDropdown: !0,
     onClick: function(event) {
       //var t = event.composeView.getToRecipients();
-      event.composeView.insertTextIntoBodyAtCursor('<img src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede'));
+      event.composeView.insertHTMLIntoBodyAtCursor('<img src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede'));
 
     }
   }),
