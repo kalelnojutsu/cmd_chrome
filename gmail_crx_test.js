@@ -26,6 +26,7 @@
               $( '#login' ).show();
             }
             else{
+              $( '#login' ).hide();
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
               $( "#user" ).empty();
               $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
@@ -173,29 +174,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       }
       chooseFile('#fileDialog');
 
-
-      // var godzilla = document.getElementById('fileDialog');
-
-      // godzilla.onclick = charge;
-
-      // function charge()
-      // {
-      //     document.body.onfocus = roar;
-      //     console.log('chargin');
-      // }
-          
-      // function roar()
-      // {
-      //     if(godzilla.value.length) alert('ROAR! FILES!')
-      //     else{
-      //       alert('*empty wheeze*');
-      //       cmd.hideDropdown();
-      //     }
-      //     document.body.onfocus = null;
-      //     console.log('depleted');
-      // }
-
-
     },
   }),
   // button select file
@@ -211,6 +189,16 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       dropdownContent.show(), n.append(dropdownContent);
       cmd.showLoadingView();
       cmd.showDocList();
+
+    }
+  }),
+  sdk.addButton({
+    title: "Track opening of your CMD emails",
+    iconUrl: 'https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png',
+    hasDropdown: !0,
+    onClick: function(event) {
+      //var t = event.composeView.getToRecipients();
+      event.composeView.insertTextIntoBodyAtCursor('<img src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede'));
 
     }
   }),
