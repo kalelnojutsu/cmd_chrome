@@ -30,6 +30,7 @@ console.log("Debut Gmail-crx");
               $( '#login' ).show();
             }
             else{
+            	$( '#login' ).hide();
             	console.log("Connected showDocList");
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
               $( "#user" ).empty();
