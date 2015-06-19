@@ -198,7 +198,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     hasDropdown: !0,
     onClick: function(event) {
       //var t = event.composeView.getToRecipients();
-      event.composeView.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede')+'">');
+      var tracking=true;
+      event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
 
     }
   }),
@@ -212,6 +213,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
+        if(tracking) composeView.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede')+'">');
       }
     });
   })
