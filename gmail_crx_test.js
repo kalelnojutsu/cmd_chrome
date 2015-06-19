@@ -205,6 +205,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
+    if(tracking) composeView.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede')+'">');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
     var b = $(sdk.getBodyElement());
@@ -213,7 +214,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
-        if(tracking) composeView.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="http://test.close-more.deals/pixelbob.php?r='+btoa('dede')+'">');
       }
     });
   })
