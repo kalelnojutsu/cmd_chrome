@@ -39,6 +39,7 @@
                 $('#doc-title').hide();
                 $('#info-recipients').show();
                 $( "#insert" ).attr('nid',$(this).attr('nid')).show();
+                $( "#insert_c" ).attr('nid',$(this).attr('nid')).show();
                 var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
                 $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
                 $('.doc').hide();
@@ -51,6 +52,14 @@
                 var t = $('a[sel=yes]').text();
                 var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
                 cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
+              });
+              $( "#insert_c" ).on( "click", function() {
+                //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
+                var a = $('a[sel=yes]');
+                var t = $('a[sel=yes]').text();
+                var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
+                var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+a.attr('nid')+".gif";
+                cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
               });
             }
             //alert(responseText);
