@@ -137,10 +137,10 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             $("#user").append("Account: "+response['user'][0]['mail']);
             $("#doc-load-title").show();
             $("#info-recipients").show();
-            $( '#login' ).hide();
+            $('#login').hide();
             $('#doc-list').hide();
-            $( '#cover' ).hide();
-            $( '#insert' ).hide();
+            $('#cover').hide();
+            $('#insert').hide();
             $("#insert_c").hide();
 
           }
