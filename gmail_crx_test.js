@@ -72,6 +72,7 @@
         $('#brand').show();
         $("#loading-view").hide();
         $("#insert").hide();
+        $("#insert_c").hide();
         $("#info-recipients").hide();
         $("#cover").empty();
         $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
@@ -140,6 +141,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             $('#doc-list').hide();
             $( '#cover' ).hide();
             $( '#insert' ).hide();
+            $("#insert_c").hide();
 
           }
 
