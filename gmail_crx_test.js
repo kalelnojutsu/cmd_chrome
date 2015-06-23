@@ -220,9 +220,17 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var t = sdk.getToRecipients();
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    var data_track = '{ "email": "'+t[0].emailAddress+'" }';
-    var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
-    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+    chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://app.close-more.deals/connect'
+        }, function(responseText) {
+        	var data_track = '{ "email": "'+t[0].emailAddress+'" }';
+    		var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(responseText);
+    		sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+        }
+    });
+
 
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
