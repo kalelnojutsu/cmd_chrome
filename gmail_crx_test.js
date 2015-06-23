@@ -216,7 +216,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
-    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="http://test.close-more.deals/pixelbob.gif.php?r='+btoa('dede')+'">');
+    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa('dede')+'">');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
     var b = $(sdk.getBodyElement());
