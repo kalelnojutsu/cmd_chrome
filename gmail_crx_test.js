@@ -228,7 +228,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         	var data_track = '{ "email": "'+t[0].emailAddress+'" }';
     		var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(responseText);
     		sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
-        }
     });
 
 
