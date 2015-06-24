@@ -221,11 +221,10 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
-    var c = sdk.getFromContact();
     var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "from": "'+c[0]+'", "email": "'+t[0].emailAddress+'" }';
+    var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getBodyElement()+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
     var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
     sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
 
