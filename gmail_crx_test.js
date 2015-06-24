@@ -88,7 +88,7 @@
   }
 
 var dropdownContent = $("#cmd-popup-layout");
-dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load(1, 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
+dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load('1.0', 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
   cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
 
 //  button file upload
@@ -221,8 +221,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
-    var c = sdk.getFromContact();
-    var subject = sdk.getSubject()
+    // var c = sdk.getFromContact();
+    // var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
     // var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "from": "'+c[0]+'", "email": "'+t[0].emailAddress+'" }';

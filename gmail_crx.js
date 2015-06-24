@@ -3,7 +3,6 @@
 
 // Script CMD Chrome Gmail Extension 0.2
 // Loaded by content.js from Github
-console.log("Debut Gmail-crx");
 
   cmd = {
     hideDropdown : function() {
@@ -13,25 +12,21 @@ console.log("Debut Gmail-crx");
       $("#loading-view").show(), $("#login-view").hide();
     },
     showDocList : function(){
-    console.log("Debut showDocList");
       if($( "#docs" ).text() == ''){
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
             url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
-        	console.log("Response from connect showDocList");
             $("#loading-view").hide();
             $("#doc-load-title").hide();
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
             if(uid == 0){
-            	console.log("Response uid=0 showDocList");
               $( '#login' ).show();
             }
             else{
-            	$( '#login' ).hide();
-            	console.log("Connected showDocList");
+              $( '#login' ).hide();
               $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
               $( "#user" ).empty();
               $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
@@ -39,12 +34,12 @@ console.log("Debut Gmail-crx");
                 $( "#docs" ).append( "<div><a sel=\"no\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
               $( ".doc" ).on( "click", function() {
-              	console.log("Click on doc showDocList");
                 $('#brand').hide();
                 $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
                 $('#doc-title').hide();
                 $('#info-recipients').show();
                 $( "#insert" ).attr('nid',$(this).attr('nid')).show();
+                $( "#insert_c" ).attr('nid',$(this).attr('nid')).show();
                 var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+$(this).attr('nid')+".gif";
                 $("#cover").append("<img id=\"vignette\" src=\""+cover_link+"\">").show();
                 $('.doc').hide();
@@ -58,6 +53,16 @@ console.log("Debut Gmail-crx");
                 var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
                 cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
               });
+              $( "#insert_c" ).on( "click", function() {
+                //event.composeView.insertTextIntoBodyAtCursor('http://l.booklet.io');
+                var a = $('a[sel=yes]');
+                var t = $('a[sel=yes]').text();
+                var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+                var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
+                var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+a.attr('nid')+".gif";
+                cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
+                cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
+              });
             }
             //alert(responseText);
             /*Callback function to deal with the response*/
@@ -69,6 +74,7 @@ console.log("Debut Gmail-crx");
         $('#brand').show();
         $("#loading-view").hide();
         $("#insert").hide();
+        $("#insert_c").hide();
         $("#info-recipients").hide();
         $("#cover").empty();
         $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
@@ -133,10 +139,11 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             $("#user").append("Account: "+response['user'][0]['mail']);
             $("#doc-load-title").show();
             $("#info-recipients").show();
-            $( '#login' ).hide();
+            $('#login').hide();
             $('#doc-list').hide();
-            $( '#cover' ).hide();
-            $( '#insert' ).hide();
+            $('#cover').hide();
+            $('#insert').hide();
+            $("#insert_c").hide();
 
           }
 
@@ -150,13 +157,14 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               method: 'POST',
               action: 'xhttp',
               data: rawData,
-              url: 'http://app.close-more.deals/add_file_gmail'
+              url: 'http://app.close-more.deals/add_file_gmail_test'
             }, function(responseText) {
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
+              var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+responseText["nid"]+".gif";
+              sdk.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
-
               cmd.hideDropdown();
 
             });
@@ -180,29 +188,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       }
       chooseFile('#fileDialog');
 
-
-      // var godzilla = document.getElementById('fileDialog');
-
-      // godzilla.onclick = charge;
-
-      // function charge()
-      // {
-      //     document.body.onfocus = roar;
-      //     console.log('chargin');
-      // }
-          
-      // function roar()
-      // {
-      //     if(godzilla.value.length) alert('ROAR! FILES!')
-      //     else{
-      //       alert('*empty wheeze*');
-      //       cmd.hideDropdown();
-      //     }
-      //     document.body.onfocus = null;
-      //     console.log('depleted');
-      // }
-
-
     },
   }),
   // button select file
@@ -221,12 +206,29 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
     }
   }),
+  // sdk.addButton({
+  //   title: "Track opening of your CMD emails",
+  //   iconUrl: 'https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png',
+  //   hasDropdown: !0,
+  //   onClick: function(event) {
+  //     //var t = event.composeView.getToRecipients();
+  //     var tracking=true;
+  //     event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
+
+  //   }
+  // }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
+    // var c = sdk.getFromContact();
+    // var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
+    // var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "from": "'+c[0]+'", "email": "'+t[0].emailAddress+'" }';
+    // var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
+    // sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
@@ -237,7 +239,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
  });
 });
 
-console.log("Fin Gmail-crx");
+
 
 
 
