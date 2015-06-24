@@ -206,28 +206,28 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
     }
   }),
-  // sdk.addButton({
-  //   title: "Track opening of your CMD emails",
-  //   iconUrl: 'https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png',
-  //   hasDropdown: !0,
-  //   onClick: function(event) {
-  //     //var t = event.composeView.getToRecipients();
-  //     var tracking=true;
-  //     event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
+  sdk.addButton({
+    title: "Track opening of your CMD emails",
+    iconUrl: 'https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png',
+    hasDropdown: !0,
+    onClick: function(event) {
+      //var t = event.composeView.getToRecipients();
+      var tracking=true;
+      event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
 
-  //   }
-  // }),
+    }
+  }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
-    // var c = sdk.getFromContact();
-    // var subject = sdk.getSubject()
+    var c = sdk.getFromContact();
+    var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    // var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "from": "'+c[0]+'", "email": "'+t[0].emailAddress+'" }';
-    // var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
-    // sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+    var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "from": "'+c[0]+'", "email": "'+t[0].emailAddress+'" }';
+    var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
+    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
 
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
