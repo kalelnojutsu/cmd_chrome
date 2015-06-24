@@ -131,6 +131,13 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
           var reader = new FileReader();
           reader.file = f;
 
+
+          reader.onprogress = function(data) {
+            if (data.lengthComputable) {                                            
+                var progress = parseInt( ((data.loaded / data.total) * 100), 10 );
+                console.log(progress);
+            }
+          }
           reader.onloadstart = function(e) {
             //console.log("Loading Starting !");
             $("#doc-load-title").empty();
