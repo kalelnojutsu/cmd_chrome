@@ -6,7 +6,7 @@
 
   cmd = {
   	changeButton : function(){
-  	  if($('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]')){
+  	  if($('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').src){
       	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').attr('src',"https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png");
       	//event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       }else{
@@ -225,7 +225,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   sdk.addButton({
     title: "Track opening of your CMD emails",
     iconUrl: 'https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png',
-    hasDropdown: !0,
+    hasDropdown: !1,
     onClick: function(event) {
       //var t = event.composeView.getToRecipients();
       var tracking=true;
