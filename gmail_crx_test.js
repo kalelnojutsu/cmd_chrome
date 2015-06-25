@@ -6,13 +6,15 @@
 
   cmd = {
   	changeButton : function(){
-  	  if($('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').attr('src')){
-      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').attr('checked','yes');
-      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').attr('src',"https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png");
+  	  var img_checked = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
+  	  var img_unchecked = "https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
+  	  if($('img[src="'+img_unchecked+'"]').attr('src')){
+      	$('img[src="'+img_unchecked+'"]').attr('checked','yes');
+      	$('img[src="'+img_unchecked+'"]').attr('src',img_checked);
       	//event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       }else{
-      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').attr('checked','no');
-      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png').attr('src',"https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png");
+      	$('img[src="'+img_checked+'').attr('checked','no');
+      	$('img[src="'+img_checked+'').attr('src',img_unchecked);
       	//event.composeView.insertHTMLIntoBodyAtCursor('No Tracking');
       }
   	},
