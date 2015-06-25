@@ -221,6 +221,11 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       //var t = event.composeView.getToRecipients();
       var tracking=true;
       event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
+      if($('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]')){
+      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').src = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
+      }else{
+      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png').src = ="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
+      }
 
     }
   }),
