@@ -9,11 +9,11 @@
   	  var img_checked = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
   	  var img_unchecked = "https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
   	  if($('img[src="'+img_unchecked+'"]').attr('src')){
-      	$('img[src="'+img_unchecked+'"]').attr('checked','yes');
+      	$('img[src="'+img_unchecked+'"]').attr('track','yes');
       	$('img[src="'+img_unchecked+'"]').attr('src',img_checked);
       	//event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       }else{
-      	$('img[src="'+img_checked+'').attr('checked','no');
+      	$('img[src="'+img_checked+'').attr('track','no');
       	$('img[src="'+img_checked+'').attr('src',img_unchecked);
       	//event.composeView.insertHTMLIntoBodyAtCursor('No Tracking');
       }
