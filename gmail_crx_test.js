@@ -7,10 +7,10 @@
   cmd = {
   	changeButton : function(){
   	  if($('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]')){
-      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').src = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
+      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png"]').attr('src',"https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png");
       	//event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       }else{
-      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png').src = "https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
+      	$('img[src="https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png').attr('src',"https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png");
       	//event.composeView.insertHTMLIntoBodyAtCursor('No Tracking');
       }
   	},
