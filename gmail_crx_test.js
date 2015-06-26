@@ -112,9 +112,12 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 		chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
-            url: 'http://app.close-more.deals/connect'
+            url: 'http://test.close-more.deals/visits_json'
         }, function(responseText) {
-        	customRouteView.getElement().textContent = responseText;
+        	// $.each(response['documents'], function( index, visit ) {
+        	// 	customRouteView.getElement().textContent +=
+        	// });
+        	 responseText;
 
         });
 		//customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
