@@ -100,11 +100,25 @@
     } 
   }
 
-var navtext = $('.gb_Lc.gb_r.gb_0c.gb_Sc');
-navtext.innerHTML = '<a href="http://app.close-more.deals" target="_blank">CMD</a>';
+// var navtext = $('.gb_Lc.gb_r.gb_0c.gb_Sc');
+// navtext.innerHTML = '<a href="http://app.close-more.deals" target="_blank">CMD</a>';
 
 var dropdownContent = $("#cmd-popup-layout");
 dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load('1.0', 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
+  
+	var routeID = 'closemoredeals/:leads';
+
+	sdk.Router.handleCustomRoute(routeID, function(customRouteView){
+		customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
+	});
+
+	sdk.NavMenu.addNavItem({
+		name: 'Close More Deals',
+		routeID: routeID,
+		routeParams: {leads: '64'}
+	});
+
+
   cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
 
 //  button file upload
