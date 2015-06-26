@@ -100,6 +100,8 @@
     } 
   }
 
+$('.gb_Lc.gb_r.gb_0c.gb_Sc').prepend('<div>Close-more.deals</div>');
+
 var dropdownContent = $("#cmd-popup-layout");
 dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px"), dropdownContent.css("padding","10px 5px 25px 5px"), InboxSDK.load('1.0', 'sdk_cmdgmailcrx_09bb9d5929').then(function(sdk){
   cmd.inboxSDK = sdk, cmd.inboxSDK.Compose.registerComposeViewHandler(function(sdk){
@@ -250,8 +252,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
     if($('img[track]').attr('track')){
     	if($('img[track=yes]').attr('track'))
-   		    sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
-   		    //sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+   		    //sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
+   		    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
     }
 
     a.each(function( index ) {
