@@ -109,7 +109,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 	var routeID = 'closemoredeals/:leads';
 
 	sdk.Router.handleCustomRoute(routeID, function(customRouteView){
-		customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
+		//customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
+		customRouteView.getElement().HTMLContent = '<iframe src="http://app.close-more.deals/home" width="100%"></iframe>';
 	});
 
 	sdk.NavMenu.addNavItem({
