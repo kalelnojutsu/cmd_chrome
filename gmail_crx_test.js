@@ -117,6 +117,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         	// $.each(response['documents'], function( index, visit ) {
         	// 	customRouteView.getElement().textContent +=
         	// });
+		var response = JSON.parse(responseText);
         	 customRouteView.getElement().textContent = responseText;
 
         });
