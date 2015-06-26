@@ -109,6 +109,14 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 	var routeID = 'closemoredeals/:leads';
 
 	sdk.Router.handleCustomRoute(routeID, function(customRouteView){
+		chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://app.close-more.deals/connect'
+        }, function(responseText) {
+        	customRouteView.getElement().textContent = responseText;
+
+        });
 		//customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
 		// var extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
 		// if (!location.ancestorOrigins.contains(extensionOrigin)) {
