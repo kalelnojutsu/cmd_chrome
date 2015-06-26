@@ -280,7 +280,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
-        url_tracking += '&doc='+btoa($(this).attr('href'));
+        url_tracking += '&doc='+$(this).attr('href');
       }
     });
     if($('img[track]').attr('track')){
