@@ -110,16 +110,16 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 
 	sdk.Router.handleCustomRoute(routeID, function(customRouteView){
 		//customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
-		var extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
-		if (!location.ancestorOrigins.contains(extensionOrigin)) {
-		    var iframe = document.createElement('iframe');
-		    // Must be declared at web_accessible_resources in manifest.json
-		    iframe.src = chrome.runtime.getURL('frame.html');
-		    // Some styles for a fancy sidebar
-		    iframe.style.cssText = 'position:fixed;top:0;left:0;display:block;' +
-		                           'width:300px;height:100%;z-index:1000;';
-		    document.body.appendChild(iframe);
-		}
+		// var extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
+		// if (!location.ancestorOrigins.contains(extensionOrigin)) {
+		//     var iframe = document.createElement('iframe');
+		//     // Must be declared at web_accessible_resources in manifest.json
+		//     iframe.src = chrome.runtime.getURL('frame.html');
+		//     // Some styles for a fancy sidebar
+		//     iframe.style.cssText = 'position:fixed;top:0;left:0;display:block;' +
+		//                            'width:300px;height:100%;z-index:1000;';
+		//     document.body.appendChild(iframe);
+		// }
 		//customRouteView.getElement().HTMLContent = '<iframe src="http://app.close-more.deals/home" width="100%"></iframe>';
 	});
 
@@ -276,18 +276,18 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var a = b.find('a');
     var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
     var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(data_track);
-    if($('img[track]').attr('track')){
-    	if($('img[track=yes]').attr('track'))
-   		    //sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
-   		    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
-    }
-
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
+        url_tracking += '&doc='+btoa($(this).attr('href'));
       }
     });
+    if($('img[track]').attr('track')){
+      if($('img[track=yes]').attr('track'))
+   	    //sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
+   	    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+    }
   })
  });
 });
