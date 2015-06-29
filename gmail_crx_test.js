@@ -185,6 +185,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             if (data.lengthComputable) {                                            
                 var progress = parseInt( ((data.loaded / data.total) * 100), 10 );
                 console.log(progress);
+                $('#pourcentage').show();
+                $('#pourcentage').text(progress);
             }
           }
           reader.onloadstart = function(e) {
