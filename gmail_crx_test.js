@@ -219,7 +219,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
               var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+responseText["nid"]+".gif";
-              sdk.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
+              sdk.insertHTMLIntoBodyAtCursor("<a uid=\""+responseText["uid"]+"\" href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
               sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
               cmd.hideDropdown();
 
@@ -288,7 +288,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
-        url_tracking += '&doc='+$(this).attr('href');
+        url_tracking += '&doc='+$(this).attr('href')+'&uid='+$(this).attr('uid');
       }
     });
     if($('img[track]').attr('track')){
