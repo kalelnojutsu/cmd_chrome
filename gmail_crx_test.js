@@ -279,7 +279,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
         }, function(responseText) {
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
+            var notif = response['user'][0]['notif'];
             $("#fileDialog").attr("uid", uid);
+            $("#fileDialog").attr("notif", notif);
         })
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
@@ -293,7 +295,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    var data_track = '{"uid":"'+$("#fileDialog").attr("uid")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
+    var data_track = '{"uid":"'+$("#fileDialog").attr("uid")+'", "notif":"'+$("#fileDialog").attr("notif")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
     var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(unescape(encodeURIComponent(data_track)));
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
