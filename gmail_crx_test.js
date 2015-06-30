@@ -76,7 +76,7 @@
                 cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
                 cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
               });
-            }
+            },
             //alert(responseText);
             /*Callback function to deal with the response*/
         });
@@ -97,7 +97,14 @@
         });
 
       } // endif
-    } 
+    },
+    showOption: function(){
+    	$("#choose").show();
+    	$( "#choose_listdoc" ).on( "click", function() {
+    		cmd.showDocList();
+    	}
+    }
+ 
   }
 
 // var navtext = $('.gb_Lc.gb_r.gb_0c.gb_Sc');
@@ -259,8 +266,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
+      cmd.showOption();
       cmd.showLoadingView();
-      cmd.showDocList();
+      //cmd.showDocList();
 
     }
   }),
@@ -301,7 +309,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
         $(this).attr('href', newurl);
-        url_tracking += '&doc='+$(this).attr('href')+'&uid='+$(this).attr('uid');
+        url_tracking += '&doc='+$(this).attr('href');
       }
     });
     if($('img[track]').attr('track')){
