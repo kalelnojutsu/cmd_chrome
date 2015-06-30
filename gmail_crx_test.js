@@ -9,7 +9,8 @@
       $("#choose").show();
       $("#loading-view").hide();
       $("#doc-load-title").hide();
-      $( "#choose_listdoc" ).on( "click", function() {
+      $("#doc-list").hide();
+      $("#choose_listdoc").on( "click", function() {
     	cmd.showDocList();
       });
     },
