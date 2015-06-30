@@ -281,7 +281,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             var uid = response['user'][0]['uid'];
             var notif = response['user'][0]['notif'];
             $("#fileDialog").attr("uid", uid);
-            $("#fileDialog").attr("notif", notif);
+            $("#fileDialog").attr("notif", uid);
         })
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
@@ -292,7 +292,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
-    var subject = sdk.getSubject()
+    var subject = sdk.getSubject();
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
     var data_track = '{"uid":"'+$("#fileDialog").attr("uid")+'", "notif":"'+$("#fileDialog").attr("notif")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
