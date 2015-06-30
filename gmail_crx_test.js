@@ -281,7 +281,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             var uid = response['user'][0]['uid'];
             var notif = response['user'][0]['notif'];
             $("#fileDialog").attr("uid", uid);
-            $("#fileDialog").attr("notif", uid);
+            $("#fileDialog").attr("notif", notif);
         })
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
