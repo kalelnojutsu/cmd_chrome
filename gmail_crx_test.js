@@ -295,7 +295,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    var data_track = '{"messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
+    var data_track = '{"uid":"'+uid+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
     var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(unescape(encodeURIComponent(data_track)));
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
