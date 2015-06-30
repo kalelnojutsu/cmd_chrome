@@ -6,7 +6,6 @@
 
   cmd = {
   	getUser : function(){
-      if($( "#docs" ).text() == ''){
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
