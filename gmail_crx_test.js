@@ -266,7 +266,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
       cmd.showLoadingView();
-      cmd.showDocList();
+      cmd.showOption();
+      //cmd.showDocList();
 
     }
   }),
