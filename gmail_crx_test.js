@@ -5,16 +5,6 @@
 // Loaded by content.js from Github
 
   cmd = {
-  	getUser : function(){
-        chrome.runtime.sendMessage({
-            method: 'POST',
-            action: 'xhttp',
-            url: 'http://app.close-more.deals/connect'
-        }, function(responseText) {
-            var response = JSON.parse(responseText);
-            return response['user'][0]['uid'];
-        })
-    },
   	changeButton : function(){
   	  var img_checked = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
   	  var img_unchecked = "https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
@@ -303,7 +293,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var subject = sdk.getSubject()
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    var data_track = '{"uid":"'+uid+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
+    var data_track = '{"uid":"'+$("#fileDialog").attr("uid")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
     var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(unescape(encodeURIComponent(data_track)));
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
