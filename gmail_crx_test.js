@@ -37,6 +37,7 @@
             action: 'xhttp',
             url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
+        	$("#choose").hide();
             $("#loading-view").hide();
             $("#doc-load-title").hide();
             var response = JSON.parse(responseText);
