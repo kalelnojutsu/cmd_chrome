@@ -5,6 +5,17 @@
 // Loaded by content.js from Github
 
   cmd = {
+  	getUser : function(){
+      if($( "#docs" ).text() == ''){
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://app.close-more.deals/connect'
+        }, function(responseText) {
+            var response = JSON.parse(responseText);
+            return response['user'][0]['uid'];
+        })
+    },
   	changeButton : function(){
   	  var img_checked = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
   	  var img_unchecked = "https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
@@ -279,6 +290,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
+    var uid = cmd.getUser();
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
     var subject = sdk.getSubject()
