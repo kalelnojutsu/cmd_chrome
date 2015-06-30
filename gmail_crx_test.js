@@ -76,7 +76,7 @@
                 cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
                 cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
               });
-            },
+            }
             //alert(responseText);
             /*Callback function to deal with the response*/
         });
