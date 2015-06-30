@@ -7,9 +7,11 @@
   cmd = {
   	showOption: function(){
       $("#choose").show();
-    	$( "#choose_listdoc" ).on( "click", function() {
-    		cmd.showDocList();
-    	});
+      $("#loading-view").hide();
+      $("#doc-load-title").hide();
+      $( "#choose_listdoc" ).on( "click", function() {
+    	cmd.showDocList();
+      });
     },
   	changeButton : function(){
   	  var img_checked = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
@@ -266,7 +268,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
-      cmd.showLoadingView();
+      //cmd.showLoadingView();
       cmd.showOption();
       //cmd.showDocList();
 
