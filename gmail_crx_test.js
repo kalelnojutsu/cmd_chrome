@@ -282,8 +282,15 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       //var t = event.composeView.getToRecipients();
       var tracking=true;
       cmd.changeButton();
-      var uid = cmd.getUser();
-      $("#fileDialog").attr("uid", uid);
+      chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://app.close-more.deals/connect'
+        }, function(responseText) {
+            var response = JSON.parse(responseText);
+            var uid = response['user'][0]['uid'];
+            $("#fileDialog").attr("uid", uid);
+        })
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
 
