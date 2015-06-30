@@ -80,8 +80,8 @@
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
               var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
               var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+responseText["nid"]+".gif";
-              sdk.insertHTMLIntoBodyAtCursor("<a uid=\""+responseText["uid"]+"\" href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
-              sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
+              cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a uid=\""+responseText["uid"]+"\" href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
+              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
               cmd.hideDropdown();
 
             });
