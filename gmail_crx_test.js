@@ -5,6 +5,102 @@
 // Loaded by content.js from Github
 
   cmd = {
+  	uploadFile: function(){
+  	  function handleFileSelect(evt) {
+
+      b = $("#fileDialog");
+      b.unbind("change", handleFileSelect);
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://app.close-more.deals/connect'
+        }, function(responseText) {
+            var response = JSON.parse(responseText);
+            var uid = response['user'][0]['uid'];
+            if(uid == 0){
+              $("#loading-view").hide();
+              $( '#login' ).show();
+            }
+            else{
+
+        //console.log("Handle file select");
+        evt.stopPropagation();
+        evt.preventDefault();
+        var files = evt.target.files; // FileList object
+        for (var i = 0, f; f = files[i]; i++) {
+          dropdownContent.show();
+          cmd.showLoadingView();
+          
+
+          var reader = new FileReader();
+          reader.file = f;
+
+
+          reader.onprogress = function(data) {
+            if (data.lengthComputable) {                                            
+                var progress = parseInt( ((data.loaded / data.total) * 100), 10 );
+                console.log(progress);
+                $('#pourcentage').show();
+                $('#pourcentage').text(progress+'%');
+            }
+          }
+          reader.onloadstart = function(e) {
+            //console.log("Loading Starting !");
+            $("#doc-load-title").empty();
+            $("#doc-load-title").append("<b>Title: </b>"+reader.file.name+"<br><span style=\"color:#D74A38\">Please Wait, your file is being uploaded</span>");
+            $("#user").empty();
+            $("#user").append("Account: "+response['user'][0]['mail']);
+            $("#doc-load-title").show();
+            $("#info-recipients").show();
+            $('#login').hide();
+            $('#doc-list').hide();
+            $('#cover').hide();
+            $('#insert').hide();
+            $("#insert_c").hide();
+
+          }
+
+          reader.onload = function(e) {
+            
+            var rawData;
+            rawData = { "data": reader.result, "file" : reader.file.name };
+            var uniqid = (new Date().getTime() + Math.floor((Math.random()*10000)+1)).toString(16);
+            console.log(uniqid+" - "+reader.file.name);
+            chrome.runtime.sendMessage({
+              method: 'POST',
+              action: 'xhttp',
+              data: rawData,
+              url: 'http://app.close-more.deals/add_file_gmail_test'
+            }, function(responseText) {
+              responseText = JSON.parse(responseText);
+              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
+              var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+responseText["nid"]+".gif";
+              sdk.insertHTMLIntoBodyAtCursor("<a uid=\""+responseText["uid"]+"\" href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
+              sdk.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
+              cmd.hideDropdown();
+
+            });
+          }
+          reader.readAsDataURL(f);
+        }// end for
+      }//end else
+      }); // end send message
+      } // end handleFileSelect()
+
+      function chooseFile(name) {
+
+        //chooser.addEventListener("change", handleFileSelect, false);
+        //console.log("Choose file function !");
+
+        var chooser = document.querySelector(name);
+        b = $(name);
+        b.bind("change", handleFileSelect);
+        chooser.click();  
+
+      }
+      chooseFile('#fileDialog');
+  	},
   	showOption: function(){
       $("#choose").show();
       $("#loading-view").hide();
@@ -12,6 +108,9 @@
       $("#doc-list").hide();
       $("#choose_listdoc").on( "click", function() {
     	cmd.showDocList();
+      });
+      $("#choose_upload").on( "click", function() {
+    	cmd.uploadFile();
       });
     },
   	changeButton : function(){
@@ -92,6 +191,7 @@
         });
       }
       else{ 
+      	$("#choose").hide();
         $("#doc-load-title").hide();
         $('#doc-title').show();
         $('#brand').show();
