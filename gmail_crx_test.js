@@ -5,6 +5,12 @@
 // Loaded by content.js from Github
 
   cmd = {
+  	showOption: function(){
+      $("#choose").show();
+    	$( "#choose_listdoc" ).on( "click", function() {
+    		this.showDocList();
+    	}
+    },
   	changeButton : function(){
   	  var img_checked = "https://cdn4.iconfinder.com/data/icons/social-messaging-productivity-4/128/checkbox-square-checked-128.png";
   	  var img_unchecked = "https://cdn4.iconfinder.com/data/icons/social-productivity-line-art-4/128/checkbox-square-unchecked-512.png";
