@@ -8,7 +8,7 @@
   	showOption: function(){
       $("#choose").show();
     	$( "#choose_listdoc" ).on( "click", function() {
-    		this.showDocList();
+    		//this.showDocList();
     	}
     },
   	changeButton : function(){
