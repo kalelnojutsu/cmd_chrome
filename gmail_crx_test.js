@@ -106,6 +106,13 @@
       $("#loading-view").hide();
       $("#doc-load-title").hide();
       $("#doc-list").hide();
+      $('#doc-title').show();
+      $('#brand').show();
+      $("#loading-view").hide();
+      $("#insert").hide();
+      $("#insert_c").hide();
+      $("#info-recipients").hide();
+      $("#cover").empty();
       $("#choose_listdoc").on( "click", function() {
     	cmd.showDocList();
       });
