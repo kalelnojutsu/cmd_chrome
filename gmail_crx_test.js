@@ -97,14 +97,7 @@
         });
 
       } // endif
-    },
-    showOption: function(){
-    	$("#choose").show();
-    	$( "#choose_listdoc" ).on( "click", function() {
-    		cmd.showDocList();
-    	}
-    }
- 
+    } 
   }
 
 // var navtext = $('.gb_Lc.gb_r.gb_0c.gb_Sc');
@@ -266,9 +259,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       cmd.inboxSDK.composeView = sdk;
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
-      cmd.showOption();
       cmd.showLoadingView();
-      //cmd.showDocList();
+      cmd.showDocList();
 
     }
   }),
