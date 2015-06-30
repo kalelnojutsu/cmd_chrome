@@ -5,11 +5,15 @@
 // Loaded by content.js from Github
 
   cmd = {
-  	uploadFile: function(){
-  	  function handleFileSelect(evt) {
-
+  	chooseFile:function (name) {
+        var chooser = document.querySelector(name);
+        b = $(name);
+        b.bind("change", cmd.handleFileSelect);
+        chooser.click();  
+    },
+  	handleFileSelect: function(evt) {
       b = $("#fileDialog");
-      b.unbind("change", handleFileSelect);
+      b.unbind("change", cmd.handleFileSelect);
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
@@ -86,20 +90,9 @@
         }// end for
       }//end else
       }); // end send message
-      } // end handleFileSelect()
-
-      function chooseFile(name) {
-
-        //chooser.addEventListener("change", handleFileSelect, false);
-        //console.log("Choose file function !");
-
-        var chooser = document.querySelector(name);
-        b = $(name);
-        b.bind("change", handleFileSelect);
-        chooser.click();  
-
-      }
-      chooseFile('#fileDialog');
+    }, // end handleFileSelect()
+  	uploadFile: function(){
+      cmd.chooseFile('#fileDialog');
   	},
   	showOption: function(){
       $("#choose").show();
