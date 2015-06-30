@@ -282,6 +282,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       //var t = event.composeView.getToRecipients();
       var tracking=true;
       cmd.changeButton();
+      var uid = cmd.getUser();
+      $("#fileDialog").attr("uid", uid);
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
 
@@ -289,7 +291,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.on("presending", function() {
     //composeView.insertTextIntoBodyAtCursor('Wazaaa');
-    var uid = cmd.getUser();
     var re = /http:\/\/l.booklet.io\/zh5\/(\d+)$/;  
     var t = sdk.getToRecipients();
     var subject = sdk.getSubject()
