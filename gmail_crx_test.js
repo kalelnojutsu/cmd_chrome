@@ -117,7 +117,7 @@
     },
   	changeButton : function(){
   	  var img_checked = "http://app.close-more.deals/images/logo_cmd_on.png";
-  	  var img_unchecked = "http://app.close-more.deals/images/logo_cmd_128.png";
+  	  var img_unchecked = "http://app.close-more.deals/images/logo_cmd_grey_128.png";
   	  if($('img[src="'+img_unchecked+'"]').attr('src')){
       	$('img[src="'+img_unchecked+'"]').attr('track','yes');
       	$('img[src="'+img_unchecked+'"]').attr('src',img_checked);
@@ -271,7 +271,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
   }),
   sdk.addButton({
     title: "Track opening of your CMD emails",
-    iconUrl: 'http://app.close-more.deals/images/logo_cmd_128.png',
+    iconUrl: 'http://app.close-more.deals/images/logo_cmd_grey_128.png',
     hasDropdown: !1,
     onClick: function(event) {
       //var t = event.composeView.getToRecipients();
