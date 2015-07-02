@@ -75,7 +75,7 @@
               method: 'POST',
               action: 'xhttp',
               data: rawData,
-              url: 'http://app.close-more.deals/add_file_gmail_test'
+              url: 'http://app.close-more.deals/add_file_gmail'
             }, function(responseText) {
               responseText = JSON.parse(responseText);
               var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
@@ -224,7 +224,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 		chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
-            url: 'http://test.close-more.deals/connect'
+            url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
         	customRouteView.getElement().textContent = responseText;
 
@@ -301,7 +301,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
     var data_track = '{"uid":"'+$("#fileDialog").attr("uid")+'", "notif":"'+$("#fileDialog").attr("notif")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+t[0].emailAddress+'" }';
-    var url_tracking = 'http://test.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(unescape(encodeURIComponent(data_track)));
+    var url_tracking = 'http://app.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(unescape(encodeURIComponent(data_track)));
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
         var newurl = $(this).attr('href') + '?to=' +t[0].emailAddress;
@@ -311,7 +311,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     });
     if($('img[track]').attr('track')){
       if($('img[track=yes]').attr('track'))
-   	    sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
+   	    //sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
    	    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
     }
   })
