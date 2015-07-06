@@ -12,12 +12,12 @@
         b.bind("change click", cmd.handleFileSelect);
     },
   	handleFileSelect: function(evt) {
-      b = $("#fileDialog");
-      if($("#fileDialog").val() == ''){
-      	 b.unbind("change click", cmd.handleFileSelect);
-      	 return;
-      }
-      b.unbind("change", cmd.handleFileSelect);
+      // b = $("#fileDialog");
+      // if($("#fileDialog").val() == ''){
+      // 	 b.unbind("change click", cmd.handleFileSelect);
+      // 	 return;
+      // }
+      // b.unbind("change", cmd.handleFileSelect);
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
@@ -97,9 +97,13 @@
       }); // end send message
     }, // end handleFileSelect()
   	uploadFile: function(){
-  	  b = $("#fileDialog");
-      b.unbind("change", cmd.handleFileSelect);
-      cmd.chooseFile('#fileDialog');
+  	  $("#choose").hide();
+  	  $('#fileDialog').show();
+      $('#fileDialog').on('change', function(){
+      	if( $('#fileDialog').val != ''){
+	      	cmd.handleFileSelect();
+    	}
+      });
   	},
   	showOption: function(){
       $("#choose").show();
