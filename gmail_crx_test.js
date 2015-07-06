@@ -18,6 +18,7 @@
       // 	 return;
       // }
       // b.unbind("change", cmd.handleFileSelect);
+        $('#sendfile').hide();
         chrome.runtime.sendMessage({
             method: 'POST',
             action: 'xhttp',
