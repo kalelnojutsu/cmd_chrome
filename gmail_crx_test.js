@@ -98,7 +98,7 @@
     }, // end handleFileSelect()
   	uploadFile: function(){
   	  $("#choose").hide();
-  	  $('#fileDialog').show();
+  	  $('#sendfile').show();
       $('#fileDialog').on('change', function(){
       	if( $('#fileDialog').val != ''){
 	      	cmd.handleFileSelect();
