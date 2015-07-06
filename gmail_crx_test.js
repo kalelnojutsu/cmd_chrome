@@ -93,6 +93,8 @@
       }); // end send message
     }, // end handleFileSelect()
   	uploadFile: function(){
+  	  b = $("#fileDialog");
+      b.unbind("change", cmd.handleFileSelect);
       cmd.chooseFile('#fileDialog');
   	},
   	showOption: function(){
