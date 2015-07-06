@@ -147,22 +147,34 @@
             action: 'xhttp',
             url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
-        	$("#choose").hide();
             $("#loading-view").hide();
             $("#doc-load-title").hide();
+            $("#choose").show();
+			$('#sendfile').hide();
+			$("#doc-list").hide();
+			$('#doc-title').show();
+			$('#brand').show();
+			$("#loading-view").hide();
+			$("#insert").hide();
+			$("#insert_c").hide();
+			$("#info-recipients").hide();
+			$("#cover").empty();
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
             if(uid == 0){
               $( '#login' ).show();
             }
             else{
-              $( '#login' ).hide();
-              $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
-              $( "#user" ).empty();
-              $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
-              $.each(response['documents'], function( index, doc ) {
-                $( "#docs" ).append( "<div><a sel=\"no\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
-              });
+              $("#choose_listdoc").on( "click", function() {
+	              $( '#login' ).hide();
+	              $("#doc-list").css("max-height","200px").css("overflow-y","scroll").show();
+	              $( "#user" ).empty();
+	              $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
+	              $.each(response['documents'], function( index, doc ) {
+	                $( "#docs" ).append( "<div><a sel=\"no\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
+	              });
+	          });
+
               $( ".doc" ).on( "click", function() {
               	$("#cover").empty();
                 $('#brand').hide();
@@ -271,8 +283,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
       //cmd.showLoadingView();
-      cmd.showOption();
-      //cmd.showDocList();
+      //cmd.showOption();
+      cmd.showDocList();
 
     }
   }),
