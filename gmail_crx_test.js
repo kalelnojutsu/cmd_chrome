@@ -99,11 +99,7 @@
   	uploadFile: function(){
   	  $("#choose").hide();
   	  $('#sendfile').show();
-      $('#fileDialog').on('change', function(){
-      	if( $('#fileDialog').val != ''){
-	      	cmd.handleFileSelect();
-    	}
-      });
+      $('#fileDialog').bind("change", cmd.handleFileSelect);
   	},
   	showOption: function(){
       $("#choose").show();
