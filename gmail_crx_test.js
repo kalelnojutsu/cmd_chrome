@@ -8,11 +8,15 @@
   	chooseFile:function (name) {
         var chooser = document.querySelector(name);
         b = $(name);
-        b.bind("change", cmd.handleFileSelect);
+        b.bind("change click", cmd.handleFileSelect);
         chooser.click();  
     },
   	handleFileSelect: function(evt) {
       b = $("#fileDialog");
+      if($("#fileDialog").val() == ''){
+      	 b.unbind("change click", cmd.handleFileSelect);
+      	 return;
+      }
       b.unbind("change", cmd.handleFileSelect);
         chrome.runtime.sendMessage({
             method: 'POST',
