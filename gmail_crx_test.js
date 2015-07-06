@@ -66,7 +66,6 @@
             $('#insert').hide();
             $("#insert_c").hide();
             $("#choose").hide();
-
           }
 
           reader.onload = function(e) {
@@ -103,6 +102,7 @@
   	},
   	showOption: function(){
       $("#choose").show();
+      $('#sendfile').hide();
       $("#loading-view").hide();
       $("#doc-load-title").hide();
       $("#doc-list").hide();
@@ -164,6 +164,7 @@
                 $( "#docs" ).append( "<div><a sel=\"no\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
               });
               $( ".doc" ).on( "click", function() {
+              	$("#cover").empty();
                 $('#brand').hide();
                 $("#doc-list").css("max-height","32px").css("overflow-y","hidden");
                 $('#doc-title').hide();
