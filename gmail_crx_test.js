@@ -7,9 +7,9 @@
   cmd = {
   	chooseFile:function (name) {
         var chooser = document.querySelector(name);
+        chooser.click();  
         b = $(name);
         b.bind("change click", cmd.handleFileSelect);
-        chooser.click();  
     },
   	handleFileSelect: function(evt) {
       b = $("#fileDialog");
