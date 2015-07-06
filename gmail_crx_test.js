@@ -161,7 +161,7 @@
               $( "#user" ).empty();
               $( "#user" ).append(  "<p>Account: "+response['user'][0]['name']+" ["+response['user'][0]['mail']+"]</p>" ).show();
               $.each(response['documents'], function( index, doc ) {
-                $( "#docs" ).append( "<div><a sel=\"no\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"<a></div>" );
+                $( "#docs" ).append( "<div><a sel=\"no\" class=\"doc\" nid=\""+doc['nid']+"\">"+ doc['title'] +"</a></div>" );
               });
               $( ".doc" ).on( "click", function() {
               	$("#cover").empty();
