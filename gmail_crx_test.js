@@ -315,6 +315,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
             var notif = response['user'][0]['notif'];
+            $('img[track]').attr("uid", uid);
+            $('img[track]').attr("notif", notif);
             $("#fileDialog").attr("uid", uid);
             $("#fileDialog").attr("notif", notif);
         })
