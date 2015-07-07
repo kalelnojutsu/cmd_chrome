@@ -101,6 +101,19 @@
   	  $('#sendfile').show();
       $('#fileDialog').bind("change", cmd.handleFileSelect);
   	},
+  	isLogged: function(){
+  		chrome.runtime.sendMessage({
+            method: 'POST',
+            action: 'xhttp',
+            url: 'http://app.close-more.deals/connect'
+        }, function(responseText) {
+        	if(uid == 0){
+              $( '#login' ).show();
+            }else{
+            	cmd.showOption();
+            }
+        })
+  	},
   	showOption: function(){
       $("#choose").show();
       $('#sendfile').hide();
@@ -272,7 +285,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
       //cmd.showLoadingView();
-      cmd.showOption();
+      cmd.isLogged();
+      //cmd.showOption();
       //cmd.showDocList();
 
     }
