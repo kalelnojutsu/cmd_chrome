@@ -113,6 +113,7 @@
         	  $("#loading-view").hide();
               $( '#login' ).show();
             }else{
+            	$("#fileDialog").attr("uid", uid);
             	cmd.showOption();
             }
         })
@@ -288,7 +289,11 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
       var n = $(event.dropdown.el);
       dropdownContent.show(), n.append(dropdownContent);
       //cmd.showLoadingView();
-      cmd.isLogged();
+      if($("#fileDialog").attr("uid") == 0){
+	    cmd.isLogged();
+      }else{
+      	cmd.showOption();
+      }
       //cmd.showOption();
       //cmd.showDocList();
 
