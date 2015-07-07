@@ -107,6 +107,8 @@
             action: 'xhttp',
             url: 'http://app.close-more.deals/connect'
         }, function(responseText) {
+        	var response = JSON.parse(responseText);
+            var uid = response['user'][0]['uid'];
         	if(uid == 0){
               $( '#login' ).show();
             }else{
