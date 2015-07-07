@@ -110,6 +110,7 @@
         	var response = JSON.parse(responseText);
             var uid = response['user'][0]['uid'];
         	if(uid == 0){
+        	  $("#loading-view").hide();
               $( '#login' ).show();
             }else{
             	cmd.showOption();
