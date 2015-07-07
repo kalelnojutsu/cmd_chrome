@@ -193,7 +193,7 @@
                 var fullUrl = 'http://l.booklet.io/zh5/'+a.attr('nid');
                 var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+a.attr('nid')+".gif";
                 cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
-                cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
+                //cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(t, fullUrl, thumbUrl);
               });
             }
             //alert(responseText);
