@@ -319,6 +319,8 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             $('img[track]').attr("notif", notif);
             $("#fileDialog").attr("uid", uid);
             $("#fileDialog").attr("notif", notif);
+            GameThrive.sendTag("uid", uid);
+
         })
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
@@ -344,7 +346,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     if($('img[track]').attr('track')){
       if($('img[track=yes]').attr('track'))
    	    //sdk.insertTextIntoBodyAtCursor('Track! '+ data_track);
-   	    sdk.insertHTMLIntoBodyAtCursor('<img width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
+   	    sdk.insertHTMLIntoBodyAtCursor('<img alt="." width="1px" height="1px" src="'+encodeURI(url_tracking)+'">');
     }
   })
  });
