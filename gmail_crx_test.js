@@ -319,8 +319,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
             $('img[track]').attr("notif", notif);
             $("#fileDialog").attr("uid", uid);
             $("#fileDialog").attr("notif", notif);
-            GameThrive.sendTag("uid", uid);
-
         })
       //event.composeView.insertHTMLIntoBodyAtCursor('Tracking activated');
       
