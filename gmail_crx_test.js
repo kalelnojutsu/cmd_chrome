@@ -343,7 +343,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     });
     if($('img[track]').attr('track')){
       if($('img[track=yes]').attr('track'))
-   	    sdk.insertTextIntoBodyAtCursor('Track! '+ url_tracking);
+   	    //sdk.insertTextIntoBodyAtCursor('Track! '+ url_tracking);
    	    sdk.insertHTMLIntoBodyAtCursor('<img alt="." width="1px" height="1px" src="'+url_tracking+'">');
     }
   })
