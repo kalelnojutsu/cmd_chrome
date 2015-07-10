@@ -99,9 +99,7 @@
   	uploadFile: function(){
   	  $("#choose").hide();
   	  $('#sendfile').show();
-  	  $("#fileDialog").change(function() {
-		cmd.handleFileSelect;
-	  });
+      $('#fileDialog').bind("change", cmd.handleFileSelect);
   	},
   	isLogged: function(){
   		chrome.runtime.sendMessage({
@@ -121,6 +119,7 @@
         })
   	},
   	showOption: function(){
+  	  $('#fileDialog').unbind("change", cmd.handleFileSelect);
       $("#choose").show();
       $('#sendfile').hide();
       $("#loading-view").hide();
