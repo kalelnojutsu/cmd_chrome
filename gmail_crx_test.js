@@ -82,12 +82,14 @@
               url: 'http://app.close-more.deals/add_file_gmail'
             }, function(responseText) {
               responseText = JSON.parse(responseText);
-              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
-              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
-              var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+responseText["nid"]+".gif";
-              cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a uid=\""+responseText["uid"]+"\" href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
-              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
-              cmd.hideDropdown();
+              if(responseText["nid"] != undefined){
+	              var thumbUrl = "https://d2qvtfnm75xrxf.cloudfront.net/public/extension/adobePdfIcon.png";
+	              var fullUrl = 'http://l.booklet.io/zh5/'+responseText["nid"];
+	              var cover_link = "http://app.close-more.deals/cover/120/140/o/c/"+responseText["nid"]+".gif";
+	              cmd.inboxSDK.composeView.insertHTMLIntoBodyAtCursor("<a uid=\""+responseText["uid"]+"\" href=\""+fullUrl+"\" target=\"_blank\"><img id=\"vignette\" src=\""+cover_link+"\"></a>");
+	              cmd.inboxSDK.composeView.insertLinkChipIntoBodyAtCursor(responseText["filename"], fullUrl, thumbUrl);
+	              cmd.hideDropdown();
+          	  }
 
             });
           }
