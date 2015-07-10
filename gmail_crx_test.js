@@ -332,7 +332,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     var subject = sdk.getSubject();
     var b = $(sdk.getBodyElement());
     var a = b.find('a');
-    var data_track = '{"uid":"'+$('img[track]').attr("uid")+'", "notif":"'+$('img[track]').attr("notif")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "email": "'+(t.length>1 ? 'someone' : t[0].emailAddress)+'" }';
+    var data_track = '{"uid":"'+$('img[track]').attr("uid")+'", "notif":"'+$('img[track]').attr("notif")+'", "messageID":"'+sdk.getMessageID()+'", "subject":"'+subject+'", "body": "'+sdk.getTextContent().replace(/"/g, '\\"').replace(/'/g, "\\'")+'", "from": "'+cmd.inboxSDK.User.getEmailAddress()+'", "to": "'+(t.length>1 ? 'someone' : t[0].emailAddress)+'" }';
     var url_tracking = 'http://app.close-more.deals/pixelbob.gif.php?d='+Date.now()+'&r='+btoa(unescape(encodeURIComponent(data_track)));
     a.each(function( index ) {
       if(re.test($(this).attr('href')) && t.length==1){
@@ -343,7 +343,7 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
     });
     if($('img[track]').attr('track')){
       if($('img[track=yes]').attr('track'))
-   	    sdk.insertTextIntoBodyAtCursor('Track! '+ url_tracking);
+   	    //sdk.insertTextIntoBodyAtCursor('Track! '+ url_tracking);
    	    sdk.insertHTMLIntoBodyAtCursor('<img alt="." width="1px" height="1px" src="'+url_tracking+'">');
     }
   })
