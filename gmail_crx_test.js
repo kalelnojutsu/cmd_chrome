@@ -268,8 +268,9 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 		    iframe.src = chrome.runtime.getURL('frame.html');
 		    // Some styles for a fancy sidebar
 		    //iframe.style.cssText = 'position:fixed;top:0;left:0;display:block;'+'width:300px;height:100%;z-index:1000;';
-		    //document.body.appendChild(iframe);
-		    customRouteView.getElement().HTMLContent = iframe;
+		    iframe.style.cssText = 'display:none;';
+		    document.body.appendChild(iframe);
+		    //customRouteView.getElement().HTMLContent = iframe;
 		}
 		//customRouteView.getElement().HTMLContent = '<iframe src="https://app.close-more.deals/home" width="100%"></iframe>';
 	});
