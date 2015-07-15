@@ -269,7 +269,6 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 		    // Some styles for a fancy sidebar
 		    //iframe.style.cssText = 'position:fixed;top:0;left:0;display:block;'+'width:300px;height:100%;z-index:1000;';
 		    iframe.style.cssText = 'display:block;';
-		    inboxsdk__custom_view_element
 		    var a = document.body.appendChild(iframe);
 		    customRouteView.getElement().HTMLContent = a;
 		}
