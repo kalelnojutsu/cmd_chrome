@@ -252,26 +252,26 @@ dropdownContent.css("width", "275px"), dropdownContent.css("max-width", "275px")
 	var routeID = 'closemoredeals/:leads';
 
 	sdk.Router.handleCustomRoute(routeID, function(customRouteView){
-		chrome.runtime.sendMessage({
-            method: 'POST',
-            action: 'xhttp',
-            url: 'http://app.close-more.deals/connect'
-        }, function(responseText) {
-        	customRouteView.getElement().textContent = responseText;
+		// chrome.runtime.sendMessage({
+  //           method: 'POST',
+  //           action: 'xhttp',
+  //           url: 'http://app.close-more.deals/connect'
+  //       }, function(responseText) {
+  //       	customRouteView.getElement().textContent = responseText;
 
-        });
-		//customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
-		// var extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
-		// if (!location.ancestorOrigins.contains(extensionOrigin)) {
-		//     var iframe = document.createElement('iframe');
-		//     // Must be declared at web_accessible_resources in manifest.json
-		//     iframe.src = chrome.runtime.getURL('frame.html');
-		//     // Some styles for a fancy sidebar
-		//     iframe.style.cssText = 'position:fixed;top:0;left:0;display:block;' +
-		//                            'width:300px;height:100%;z-index:1000;';
-		//     document.body.appendChild(iframe);
-		// }
-		//customRouteView.getElement().HTMLContent = '<iframe src="http://app.close-more.deals/home" width="100%"></iframe>';
+  //       });
+		customRouteView.getElement().textContent = 'Vous avez ' + customRouteView.getParams().leads+' leads!';
+		var extensionOrigin = 'chrome-extension://' + chrome.runtime.id;
+		if (!location.ancestorOrigins.contains(extensionOrigin)) {
+		    var iframe = document.createElement('iframe');
+		    // Must be declared at web_accessible_resources in manifest.json
+		    iframe.src = chrome.runtime.getURL('frame.html');
+		    // Some styles for a fancy sidebar
+		    iframe.style.cssText = 'position:fixed;top:0;left:0;display:block;' +
+		                           'width:300px;height:100%;z-index:1000;';
+		    document.body.appendChild(iframe);
+		}
+		//customRouteView.getElement().HTMLContent = '<iframe src="https://app.close-more.deals/home" width="100%"></iframe>';
 	});
 
 	sdk.NavMenu.addNavItem({
